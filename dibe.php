@@ -9,6 +9,8 @@ require "function_request.php";
 echo "<head>";
 echo "<link rel='stylesheet' type='text/css' href='css/style.css' />";
 echo "<link rel='stylesheet' href='css/bootstrap.min.css'>";
+echo "<link rel='stylesheet' href='css/sweet-alert.css'>";
+echo "<link rel='stylesheet' href='css/zzsc.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
@@ -21,7 +23,7 @@ echo "<a class='button_back' href='index.php'><i class='material-icons icon-back
 
 /****************************************** Page ******************************************/
 
-echo "<form id='form_dibe' name='form_dibe' action='' method='post' enctype='multipart/form-data'>"; //onSubmit='return check_siren()'
+echo "<form id='form_dibe' name='form_dibe' action='' method='post' enctype='multipart/form-data' onSubmit='return check_dibe()'>"; //onSubmit='return check_siren()'
 echo "<div class='total light'>";
 echo "<div class='commande_dibe'>";
 
@@ -93,3 +95,4 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
 echo "</div>"; // page
 echo "<script src='javascript/jquery-3.2.1.min.js'></script>";
 echo "<script src='javascript/javascript.js'></script>";
+echo "<script src='javascript/sweet-alert.js'></script>";

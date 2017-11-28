@@ -14,6 +14,46 @@ function check_siren() {
     }
 }
 
+function check_dibe() {
+    var nclient = document.getElementById("input_dibe_nc").value;
+    var nutilis = document.getElementById("input_dibe_nut").value;
+    var mdp = document.getElementById("input_dibe_mdp").value;
+    var ref = document.getElementById("input_dibe_ref").value;
+    var file = document.getElementById("input_dibe_csv").value;
+
+    if (nclient != "" && (isNaN(nclient) || nclient.length < 4)) {
+        swal("Oops...", "Le numéro de client non disponible!", "error");
+        return false;
+    }
+    else if (nclient == "") {
+        swal("Oops...", "Le numéro de client ne peut pas être vide!", "error");
+        return false;
+    }
+    else if (nutilis != "" && (isNaN(nutilis) || nutilis.length < 4)) {
+        swal("Oops...", "Le numéro d'utilisateur non disponible!", "error");
+        return false;
+    }
+    else if (nutilis == "") {
+        swal("Oops...", "Le numéro d'utilisateur ne peut pas être vide!", "error");
+        return false;
+    }
+    else if (mdp == "") {
+        swal("Oops...", "Le mot de passe ne peut pas être vide!", "error");
+        return false;
+    }
+    else if (ref != "" && ref.length < 8) {
+        swal("Oops...", "La référence non disponible!", "error");
+        return false;
+    }
+    else if (file == "") {
+        swal("Oops...", "Le fichier est obligatoire!", "error");
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 function check_date(str_date_1, str_date_2) {
     var date_1 = document.getElementById(str_date_1).value;
     var date_2 = document.getElementById(str_date_2).value;
