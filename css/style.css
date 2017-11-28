@@ -56,6 +56,14 @@ div {
     padding: 0;
 }
 
+.pages {
+    display: flex;
+}
+
+.link_page {
+    margin-right: 2%;
+}
+
 .block {
     /* border: 1px solid #ccc; */
     /* border-radius: 3px; */
@@ -63,7 +71,7 @@ div {
     padding: 30px 0;
 }
 
-.button_request {
+.button_request, .button_dibe {
     font-size: 16;
     color: var(--text-blue);
     transition: 0.5s;
@@ -75,7 +83,7 @@ div {
     /* left: 20px; */
 }
 
-.button_request:hover {
+.button_request:hover, .button_dibe:hover {
     color: var(--color-white);
     background-color: var(--text-blue);
     text-decoration: none;
@@ -193,7 +201,7 @@ a.api_lien{
 }
 
 /********************** Page Requêtes **********************/
-.title_requestes {
+.title_requestes, .title_dibe {
     text-align: center;
     color: var(--text-blue);
     font-size: 25;
@@ -413,6 +421,47 @@ a.api_lien{
     display: none;
 }
 
+/********************** Page DIBE **********************/
+.commande_dibe {
+    display: flex;
+    justify-content: center;
+}
+
+.titles_input {
+    text-align: right;
+    left: -3%;
+}
+
+.inputs_dibe {
+    text-align: left;
+    right: -1%;
+}
+
+.title_input {
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-blue);
+}
+
+.input_dibe {
+    line-height: 30px;
+}
+
+.input_text_dibe {
+    
+    padding: 0 20px;
+    text-align: left;
+    border: 1px solid var(--color-white);
+    border-radius: 8px;
+    height: 31px;
+}
+
+.input_text_dibe_upload {
+    padding-top: 6px;
+}
+
+/********************** Color **********************/
 
 :root{
     --backgroudcolor-dark: #DCDDD7;
