@@ -13,8 +13,12 @@ echo "<div class='title_logo dark'>";
 echo "<div class='logo'></div>";
 echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
-echo "<div class='back'>";
+echo "<div class='pages no-padding'>";
+echo "<div class='link_page'>";
 echo "<a class='button_request' href='requeste.php' target='_blank'>Requête<i class='material-icons icon-back'>arrow_forward</i></a></div>";
+echo "<div class='link_page'>";
+echo "<a class='button_dibe' href='dibe.php' target='_blank'>DIBE<i class='material-icons icon-back'>arrow_forward</i></a></div>";
+echo "</div>";
 
 /****************************************** Siren input ******************************************/
 echo "<div class='top light'>";
