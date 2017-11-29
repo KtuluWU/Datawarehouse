@@ -50,6 +50,10 @@ div {
     padding: 10px 0 10px 0;
 }
 
+form {
+    margin-bottom: 0;
+}
+
 .page {
     width: 60%;
     margin: 0 auto;
@@ -286,6 +290,7 @@ a.api_lien{
     z-index: 999;
     position: relative;
     left: 10px;
+    cursor: pointer;
 
 }
 
@@ -444,6 +449,13 @@ a.api_lien{
     color: var(--text-blue);
 }
 
+.info_input {
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--title-green);
+}
+
 .input_dibe {
     line-height: 30px;
 }
@@ -461,6 +473,16 @@ a.api_lien{
     padding-top: 6px;
 }
 
+.back_forward_lien {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.back_dibe {
+    left: 0;
+    text-decoration: none;
+}
 /********************** Color **********************/
 
 :root{

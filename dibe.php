@@ -14,13 +14,15 @@ echo "<link rel='stylesheet' href='css/zzsc.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
-echo "<div class='logo'></div>";
+echo "<div class='logo' onclick='navigateTo()'></div>";
 echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
-echo "</div>";
+echo "</div>"; // title_logo
 echo "<div class='title_dibe light'>Commande DIBE</div>";
+// echo "<div class='back_forward_lien light'>";
 echo "<div class='back light'>";
 echo "<a class='button_back' href='index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 
+// echo "</div>"; // back_forward_lien
 /****************************************** Page ******************************************/
 
 echo "<form id='form_dibe' name='form_dibe' action='' method='post' enctype='multipart/form-data' onSubmit='return check_dibe()'>"; //onSubmit='return check_siren()'
@@ -45,12 +47,12 @@ echo "</div>";// inputs_dibe
 echo "</div>"; // commande_dibe
 
 echo "<div class='button_with_icon'>";
-echo "<input class='button_chercher' type='submit' value='Commander' id='button_siren' onClick=''>";
+echo "<input class='button_chercher' type='submit' value='Commander' id='button_siren'>";
 echo "<label><i class='material-icons icon-search'>search</i></label>";
 echo "</div>";
-
+echo "</div>"; // total
 echo "</form>";
-echo "</div>"; //saisir
+
 
 $numclient = $_POST['input_dibe_nc']; 
 $numutilis = $_POST['input_dibe_nut'];
@@ -66,8 +68,7 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
     echo "référence: $ref</br>";
     echo "identification: $identification</br>"; */
 
-    if ($_FILES["input_dibe_csv"]["error"] > 0)
-    {
+    if ($_FILES["input_dibe_csv"]["error"] > 0) {
       echo "<div class='error_file'>Error: " . $_FILES["input_dibe_csv"]["error"] . "</div>";
     }
     else {
@@ -86,8 +87,18 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
 
         $str_python = "sudo python ".$url_file_mac_localhost."dibe_pdf.py -i ".$identification." -f ".$url_file_mac_localhost."upload/".$filename." -d ".$url_file_mac_localhost."python";
         // $str_python = "sudo python ".$url_python_intranet."dibe_pdf.py -i ".$identification." -f ".$url_python_intranet."upload/".$filename." -d ".$url_python_intranet."python";
-        exec($str_python);
-        // echo "</br>Done!";
+        
+        exec($str_python, $return_array, $coderetour);
+        // echo $coderetour;
+        
+        /****************************************** Résultat ******************************************/
+        echo "<div class='resultat dark'>";
+        echo "<div class='button_with_icon'>";
+        echo "<a class='button_chercher back_dibe' href='dibe_histo.php?nclient=$numclient&nutilisateur=$numutilis&ref=$ref&file=$filename&statut=$coderetour' target='_blank'>Historique</a>";
+        echo "<label><i class='material-icons icon-search'>arrow_forward</i></label>";
+        echo "</div>"; // button_with_icon
+        
+        echo "</div>"; // resultat
     }
 }
 

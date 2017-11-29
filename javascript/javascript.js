@@ -1,3 +1,7 @@
+function navigateTo() {
+    this.location.href = 'index.php';
+}
+
 function check_siren() {
     var siren = document.getElementById("input_text_siren").value;
     var len_siren = siren.length;
