@@ -10,7 +10,7 @@ echo "<link rel='stylesheet' href='css/bootstrap.min.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
-echo "<div class='logo'></div>";
+echo "<div class='logo' onclick='navigateTo()'></div>";
 echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 echo "<div class='pages no-padding'>";
