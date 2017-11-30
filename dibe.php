@@ -93,7 +93,7 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
         
         /****************************************** Résultat ******************************************/
         echo "<div class='resultat dark'>";
-        echo "<div class='button_with_icon'>";
+        echo "<div class='button_with_icon back_dibe'>";
         echo "<a class='button_chercher back_dibe' href='dibe_histo.php?nclient=$numclient&nutilisateur=$numutilis&ref=$ref&file=$filename&statut=$coderetour' target='_blank'>Historique</a>";
         echo "<label><i class='material-icons icon-search'>arrow_forward</i></label>";
         echo "</div>"; // button_with_icon
