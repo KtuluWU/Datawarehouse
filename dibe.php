@@ -86,11 +86,12 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
         // echo "Nom du fichier: <label class='text-rouge'>$filename</label><br>";
 
         $str_python = "sudo python ".$url_file_mac_localhost."dibe_pdf.py -i ".$identification." -f ".$url_file_mac_localhost."upload/".$filename." -d ".$url_file_mac_localhost."python";
-        // $str_python = "sudo python ".$url_python_intranet."dibe_pdf.py -i ".$identification." -f ".$url_python_intranet."upload/".$filename." -d ".$url_python_intranet."python";
+        // $str_python = "python ".$url_python_intranet."dibe_pdf.py -i ".$identification." -f ".$url_python_intranet."upload/".$filename." -d ".$url_python_intranet."python";
         
         exec($str_python, $return_array, $coderetour);
         // echo $coderetour;
-        
+        unlink($url_file_mac_localhost."upload/$filename");
+        // unlink($url_file_intranet."upload/$filename");
         /****************************************** Résultat ******************************************/
         echo "<div class='resultat dark'>";
         echo "<div class='button_with_icon back_dibe'>";
