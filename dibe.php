@@ -92,8 +92,53 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
         // echo $coderetour;
         unlink($url_file_mac_localhost."upload/$filename");
         // unlink($url_file_intranet."upload/$filename");
+        function vide_file_python() {
+            $url_file_mac_localhost = "/Users/yw/Website_Apache/associe/";
+            $url_file_intranet = "./";
+
+            $file_python = $url_file_mac_localhost."python";
+            // $file_python = $url_python_intranet."python";
+            $handler = opendir($file_python);
+            while (($filenamee = readdir($handler)) !== false) {//务必使用!==，防止目录下出现类似文件名“0”等情况  
+                if ($filenamee != "." && $filenamee != "..") {  
+                        $files[] = $filenamee ;  
+                }  
+            }  
+            closedir($handler);
+    
+            // print_r($files); 
+             foreach($files as $v) {
+                unlink("./python/$v");
+            } 
+        }
+        /****************************************** Download *****************************************/
+        function addFileToZip($path,$zip){
+            $handler=opendir($path); //打开当前文件夹由$path指定。
+            while(($filename=readdir($handler))!==false){
+                if($filename != "." && $filename != ".."){//文件夹文件名字为'.'和‘..’，不要对他们进行操作
+                    if(is_dir($path."/".$filename)){// 如果读取的某个对象是文件夹，则递归
+                        addFileToZip($path."/".$filename, $zip);
+                    }else{ //将文件加入zip对象
+                        $zip->addFile($path."/".$filename);
+                    }
+                }
+            }
+            @closedir($path);
+        }
+        $zip=new ZipArchive();
+        $zip->open('python_zip/python_resultats.zip', ZipArchive::OVERWRITE|ZipArchive::CREATE);
+        addFileToZip('python/', $zip); //调用方法，对要打包的根目录进行操作，并将ZipArchive的对象传递给方法
+        $zip->close(); //关闭处理的zip文件
+        vide_file_python();      
+
         /****************************************** Résultat ******************************************/
         echo "<div class='resultat dark'>";
+        
+        echo "<div class='list_er button_with_icon'>";
+        echo "<a class='list' href='python_zip/python_resultats.zip' target='_blank'>Export</a>";
+        echo "<label><i class='material-icons icon-search'>file_download</i></label>";
+        echo "</div>";
+
         echo "<div class='button_with_icon back_dibe'>";
         echo "<a class='button_chercher back_dibe' href='dibe_histo.php?nclient=$numclient&nutilisateur=$numutilis&ref=$ref&file=$filename&statut=$coderetour' target='_blank'>Historique</a>";
         echo "<label><i class='material-icons icon-search'>arrow_forward</i></label>";
