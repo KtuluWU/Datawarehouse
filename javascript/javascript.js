@@ -45,10 +45,10 @@ function check_dibe() {
         swal("Oops...", "Le mot de passe ne peut pas être vide!", "error");
         return false;
     }
-    else if (ref != "" && ref.length < 8) {
+    /* else if (ref != "" && ref.length < 8) {
         swal("Oops...", "La référence non disponible!", "error");
         return false;
-    }
+    } */
     else if (file == "") {
         swal("Oops...", "Le fichier est obligatoire!", "error");
         return false;
