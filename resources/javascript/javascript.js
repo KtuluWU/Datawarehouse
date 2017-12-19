@@ -1,5 +1,25 @@
-function navigateTo() {
+function navigateTo_index_for_index() {
     this.location.href = 'index.php';
+}
+
+function navigateTo_index() {
+    this.location.href = '../../index.php';
+}
+
+function navigateTo_associes() {
+    this.location.href = 'src/pages/associes.php';
+}
+
+function navigateTo_request() {
+    this.location.href = 'src/pages/request.php';
+}
+
+function navigateTo_dibe() {
+    this.location.href = 'src/pages/dibe.php';
+}
+
+function navigateTo_apitest() {
+    this.location.href = 'src/pages/apitest.php';
 }
 
 function check_siren() {

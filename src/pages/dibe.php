@@ -14,7 +14,7 @@ echo "<link rel='stylesheet' href='../../resources/css/zzsc.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
-echo "<div class='logo' onclick='navigateTo()'></div>";
+echo "<div class='logo' onclick='navigateTo_index()'></div>";
 echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>"; // title_logo
 echo "<div class='title_dibe light'>Commande DIBE</div>";
