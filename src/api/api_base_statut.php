@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL || ~E_NOTICE);
-require("../config/config.php");
+require("../../config/config.php");
 
 $siren = $_GET['siren'];
 /* 
@@ -9,7 +9,7 @@ echo '<br>'; */
 
 function statut($p_siren) {
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://79.137.30.196:8079/associes/bdirects?siren=$p_siren");
+    curl_setopt($ch, CURLOPT_URL, "http://79.137.30.196:8079/associes/statut?siren=$p_siren");
     // curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);

@@ -21,13 +21,13 @@ function echo_input($class_block, $form_id_name, $class_inout, $date1, $date2, $
     echo "</div>";
     echo "</form>";
     echo "</div>";
-    echo "<div class='no-padding' id='$loadinggif'><img class='loadinggif' alt='Chargement...' src='./assets/loading_gr.gif'/></div>";
+    echo "<div class='no-padding' id='$loadinggif'><img class='loadinggif' alt='Chargement...' src='../../resources/assets/loading_gr.gif'/></div>";
     echo "<div class='$response_area' id='$response_area'></div>";
 }
 
 function export_siren_traite($data,$file_name) {
     
-    $fp = fopen ("./csv/$file_name.csv","w");
+    $fp = fopen ("../../csv/$file_name.csv","w");
     $header_data = array("Siren", "Disponibilite");
     fputcsv($fp, $header_data);
 

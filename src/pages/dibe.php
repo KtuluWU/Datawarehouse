@@ -2,15 +2,15 @@
 // error_reporting(E_ALL || ~E_NOTICE);
 ini_set("max_execution_time", 0);
 
-require "config/config.php";
-require "function_request.php";
+require "../../config/config.php";
+require "../function_request.php";
 
 /****************************************** Title ******************************************/
 echo "<head>";
-echo "<link rel='stylesheet' type='text/css' href='css/style.css' />";
-echo "<link rel='stylesheet' href='css/bootstrap.min.css'>";
-echo "<link rel='stylesheet' href='css/sweet-alert.css'>";
-echo "<link rel='stylesheet' href='css/zzsc.css'>";
+echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";
+echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
+echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
+echo "<link rel='stylesheet' href='../../resources/css/zzsc.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
@@ -20,7 +20,7 @@ echo "</div>"; // title_logo
 echo "<div class='title_dibe light'>Commande DIBE</div>";
 // echo "<div class='back_forward_lien light'>";
 echo "<div class='back light'>";
-echo "<a class='button_back' href='index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
+echo "<a class='button_back' href='../../index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 
 // echo "</div>"; // back_forward_lien
 /****************************************** Page ******************************************/
@@ -77,27 +77,20 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
         $tmp_name=$_FILES['input_dibe_csv']["tmp_name"];
         $size=$_FILES['input_dibe_csv']["size"];
         $error=$_FILES['input_dibe_csv']["error"];
-        $url_file_mac_localhost = "/Users/yw/Website_Apache/associe/";
-        $url_file_intranet = "./";
+        $url_python_mac_locl = "/Users/yw/Website_Apache/associe/";
         $url_python_intranet = "C:/xampp/htdocs/associe/";
-        move_uploaded_file($tmp_name, $url_file_mac_localhost."upload/".$filename);
-        // move_uploaded_file($tmp_name, $url_file_intranet."upload/".$filename);
+        $url_file = "../../";
         
-        // echo "Nom du fichier: <label class='text-rouge'>$filename</label><br>";
+        move_uploaded_file($tmp_name, $url_file."upload/".$filename);
 
-        $str_python = "sudo python ".$url_file_mac_localhost."dibe_pdf.py -i ".$identification." -f ".$url_file_mac_localhost."upload/".$filename." -d ".$url_file_mac_localhost."python";
+        $str_python = "sudo python ".$url_python_mac_locl."dibe_pdf.py -i ".$identification." -f ".$url_python_mac_locl."upload/".$filename." -d ".$url_python_mac_locl."python";
         // $str_python = "python ".$url_python_intranet."dibe_pdf.py -i ".$identification." -f ".$url_python_intranet."upload/".$filename." -d ".$url_python_intranet."python";
         
         exec($str_python, $return_array, $coderetour);
-        // echo $coderetour;
-        unlink($url_file_mac_localhost."upload/$filename");
-        // unlink($url_file_intranet."upload/$filename");
+        unlink($url_file."upload/$filename");
         function vide_file_python() {
-            $url_file_mac_localhost = "/Users/yw/Website_Apache/associe/";
-            $url_file_intranet = "./";
-
-            $file_python = $url_file_mac_localhost."python";
-            // $file_python = $url_python_intranet."python";
+            $url_file = "../../";
+            $file_python = $url_file."python";
             $handler = opendir($file_python);
             while (($filenamee = readdir($handler)) !== false) {//务必使用!==，防止目录下出现类似文件名“0”等情况  
                 if ($filenamee != "." && $filenamee != "..") {  
@@ -105,10 +98,8 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
                 }  
             }  
             closedir($handler);
-    
-            // print_r($files); 
-             foreach($files as $v) {
-                unlink("./python/$v");
+            foreach($files as $v) {
+                unlink($url_file."python/$v");
             } 
         }
         /****************************************** Download *****************************************/
@@ -126,8 +117,8 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
             @closedir($path);
         }
         $zip=new ZipArchive();
-        $zip->open('python_zip/python_resultats.zip', ZipArchive::OVERWRITE|ZipArchive::CREATE);
-        addFileToZip('python/', $zip); //调用方法，对要打包的根目录进行操作，并将ZipArchive的对象传递给方法
+        $zip->open($url_file.'python_zip/python_resultats.zip', ZipArchive::OVERWRITE|ZipArchive::CREATE);
+        addFileToZip($url_file.'python/', $zip); //调用方法，对要打包的根目录进行操作，并将ZipArchive的对象传递给方法
         $zip->close(); //关闭处理的zip文件
         vide_file_python();      
 
@@ -135,7 +126,7 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
         echo "<div class='resultat dark'>";
         
         echo "<div class='list_er button_with_icon'>";
-        echo "<a class='list' href='python_zip/python_resultats.zip' target='_blank'>Export</a>";
+        echo "<a class='list' href='../../python_zip/python_resultats.zip' target='_blank'>Export</a>";
         echo "<label><i class='material-icons icon-search'>file_download</i></label>";
         echo "</div>";
 
@@ -150,6 +141,6 @@ if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_d
 
 
 echo "</div>"; // page
-echo "<script src='javascript/jquery-3.2.1.min.js'></script>";
-echo "<script src='javascript/javascript.js'></script>";
-echo "<script src='javascript/sweet-alert.js'></script>";
+echo "<script src='../../resources/javascript/jquery-3.2.1.min.js'></script>";
+echo "<script src='../../resources/javascript/javascript.js'></script>";
+echo "<script src='../../resources/javascript/sweet-alert.js'></script>";

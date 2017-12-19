@@ -1,5 +1,5 @@
 <?php 
-require "config/config.php";
+require "../config/config.php";
 require "function_request.php";
 
 /********* Connexion de la Base de données associées *********/
@@ -41,4 +41,4 @@ echo "</div>";
 
 
 
-echo "<link rel='stylesheet' type='text/css' href='css/style.css' />";
+echo "<link rel='stylesheet' type='text/css' href='../resources/css/style.css' />";

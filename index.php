@@ -4,9 +4,9 @@ require "config/config.php";
 
 /****************************************** Page ******************************************/
 echo "<head>";
-echo "<link rel='stylesheet' type='text/css' href='css/style.css' />";
-echo "<link rel='stylesheet' href='css/sweet-alert.css'>";
-echo "<link rel='stylesheet' href='css/bootstrap.min.css'>";
+echo "<link rel='stylesheet' type='text/css' href='resources/css/style.css' />";
+echo "<link rel='stylesheet' href='resources/css/sweet-alert.css'>";
+echo "<link rel='stylesheet' href='resources/css/bootstrap.min.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
@@ -15,9 +15,11 @@ echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 echo "<div class='pages no-padding'>";
 echo "<div class='link_page'>";
-echo "<a class='button_request' href='requeste.php' target='_blank'>Requête<i class='material-icons icon-back'>arrow_forward</i></a></div>";
+echo "<a class='button_request' href='src/pages/request.php' target='_blank'>Requête<i class='material-icons icon-back'>arrow_forward</i></a></div>";
 echo "<div class='link_page'>";
-echo "<a class='button_dibe' href='dibe.php' target='_blank'>DIBE<i class='material-icons icon-back'>arrow_forward</i></a></div>";
+echo "<a class='button_dibe' href='src/pages/dibe.php' target='_blank'>DIBE<i class='material-icons icon-back'>arrow_forward</i></a></div>";
+echo "<div class='link_page'>";
+echo "<a class='button_apitest' href='src/pages/apitest.php' target='_blank'>API TEST<i class='material-icons icon-back'>arrow_forward</i></a></div>";
 echo "</div>";
 
 /****************************************** Siren input ******************************************/
@@ -48,22 +50,22 @@ echo "<div class='api'>";
 echo "<div class='api_base'>";
 echo "<div class='title_api'>API de base</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='api/api_base_statut.php?siren=$siren' target='_blank'>l’état</a>";
+echo "<a class='api_lien list' href='src/api/api_base_statut.php?siren=$siren' target='_blank'>l’état</a>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='api/api_base_bdirects.php?siren=$siren' target='_blank'>associés</a><br>";
+echo "<a class='api_lien list' href='src/api/api_base_bdirects.php?siren=$siren' target='_blank'>associés</a><br>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";
 echo "</div>";
 echo "<div class='api_commercant'>";
 echo "<div class='title_api'>API commerçante</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='api/api_statut.php?siren=$siren' target='_blank'>l'état</a><br>";
+echo "<a class='api_lien list' href='src/api/api_statut.php?siren=$siren' target='_blank'>l'état</a><br>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='api/api_associe.php?siren=$siren' target='_blank'>associés</a><br>";
+echo "<a class='api_lien list' href='src/api/api_associe.php?siren=$siren' target='_blank'>associés</a><br>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";//block_api
 
@@ -219,6 +221,6 @@ for ($i=0; $i<$sizetable; $i++) {
     echo "</div></div>";
 }
 
-echo "<script src='javascript/jquery-3.2.1.min.js'></script>";
-echo "<script src='javascript/javascript.js'></script>";
-echo "<script src='javascript/sweet-alert.js'></script>";
+echo "<script src='resources/javascript/jquery-3.2.1.min.js'></script>";
+echo "<script src='resources/javascript/javascript.js'></script>";
+echo "<script src='resources/javascript/sweet-alert.js'></script>";

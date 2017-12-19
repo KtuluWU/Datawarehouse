@@ -83,7 +83,7 @@ function check_date(str_date_1, str_date_2) {
 
 function ajax_send_date(msg, date1, date2, req_file, loadinggif) {
 
-    var url = "../associe/requests/" + req_file + ".php";
+    var url = "../requests/" + req_file + ".php";
     var postdate = "date1=" + date1 + "&date2=" + date2;
 
     var ajax = false;

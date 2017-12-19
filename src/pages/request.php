@@ -2,8 +2,8 @@
 // error_reporting(E_ALL || ~E_NOTICE);
 ini_set("max_execution_time", 0);
 
-require "config/config.php";
-require "function_request.php";
+require "../../config/config.php";
+require "../function_request.php";
 
 /********* Connexion de la Base de données associées *********/
 $dbtest2 = pg_connect($pg_conn_string);
@@ -11,11 +11,11 @@ $db_conn_mysql = mysqli_connect($mysqli_host, $mysqli_dbusername, $mysqli_dbpass
 
 /****************************************** Page ******************************************/
 echo "<head>";
-echo "<link rel='stylesheet' type='text/css' href='css/style.css' />";
-echo "<link rel='stylesheet' href='css/sweet-alert.css'>";
-echo "<link rel='stylesheet' href='css/bootstrap.min.css'>";
-echo "<link rel='stylesheet' href='css/zzsc.css'>";
-echo "<link rel='stylesheet' href='css/dcalendar.picker.css'>";
+echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";
+echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
+echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
+echo "<link rel='stylesheet' href='../../resources/css/zzsc.css'>";
+echo "<link rel='stylesheet' href='../../resources/css/dcalendar.picker.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
@@ -24,7 +24,7 @@ echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 echo "<div class='title_requestes light'>Requêtes</div>";
 echo "<div class='back light'>";
-echo "<a class='button_back' href='index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
+echo "<a class='button_back' href='../../index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 
 /****************************************** Nombre de Sociétés saisies non rejetées ******************************************/
 $query_saisie_ass = pg_query($dbtest2, "select count(distinct idpm) from public.ta_associes");
@@ -87,10 +87,8 @@ function siren_check($siren_r) {    //Pour vérifier si tous les siren sont comp
         $siren_r[$i] = "0".$siren_r[$i];
         $lenth_siren += "1";
       }
-      // echo $siren_r[$i]."<br>";
       array_push($siren_new_r, $siren_r[$i]);
     }
-    // print_r($siren_new_r);
     return $siren_new_r;
 }
 
@@ -105,15 +103,12 @@ if ($_FILES["file"]["type"] == "text/csv") {
     $tmp_name=$_FILES['file']["tmp_name"];
     $size=$_FILES['file']["size"];
     $error=$_FILES['file']["error"];
-    $url_file_mac_localhost = "/Users/yw/Website_Apache/associe/";
-    $url_file_intranet = "./";
+    $url_file = "../../";
 
-    move_uploaded_file($tmp_name, $url_file_mac_localhost."upload/".$filename);
-    // move_uploaded_file($tmp_name, $url_file_intranet."upload/".$filename);
+    move_uploaded_file($tmp_name, $url_file."upload/".$filename);
     
     echo "Nom du fichier: <label class='text-rouge'>$filename</label><br>";
-    $file_csv = fopen($url_file_mac_localhost."upload/".$filename,"r");
-    // $file_csv = fopen($url_file_intranet."upload/".$filename,"r");
+    $file_csv = fopen($url_file."upload/".$filename,"r");
     $siren_doc_r = array();
     while(!feof($file_csv))
     {
@@ -131,9 +126,9 @@ if ($_FILES["file"]["type"] == "text/csv") {
     export_siren_traite($statut_r, "statut");
     
     
-    unlink("./upload/$filename");
+    unlink($url_file."upload/$filename");
     echo "<div class='statut button_with_icon'>";
-    echo "<a class='list' href='/associe/csv/statut.csv' target='_blank'>Export</a>";
+    echo "<a class='list' href='../../csv/statut.csv' target='_blank'>Export</a>";
     echo "<label><i class='material-icons icon-search'>get_app</i></label>";
     echo "</div>";
   }
@@ -144,7 +139,7 @@ echo "</div>";
 
 
 echo "</div>";//page
-echo "<script src='javascript/jquery-3.2.1.min.js'></script>";
-echo "<script src='javascript/javascript.js'></script>";
-echo "<script src='javascript/sweet-alert.js'></script>";
-echo "<script src='javascript/dcalendar.picker.js'></script>";
+echo "<script src='../../resources/javascript/jquery-3.2.1.min.js'></script>";
+echo "<script src='../../resources/javascript/javascript.js'></script>";
+echo "<script src='../../resources/javascript/sweet-alert.js'></script>";
+echo "<script src='../../resources/javascript/dcalendar.picker.js'></script>";

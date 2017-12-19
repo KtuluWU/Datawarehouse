@@ -79,7 +79,7 @@ a:hover, a:focus {
     padding: 30px 0;
 }
 
-.button_request, .button_dibe {
+.button_request, .button_dibe, .button_apitest {
     font-size: 16;
     color: var(--text-blue);
     transition: 0.5s;

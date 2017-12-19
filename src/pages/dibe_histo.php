@@ -2,15 +2,15 @@
 // error_reporting(E_ALL || ~E_NOTICE);
 ini_set("max_execution_time", 0);
 
-require "config/config.php";
-require "function_request.php";
+require "../../config/config.php";
+require "../function_request.php";
 
 /****************************************** Title ******************************************/
 echo "<head>";
-echo "<link rel='stylesheet' type='text/css' href='css/style.css' />";
-echo "<link rel='stylesheet' href='css/bootstrap.min.css'>";
-echo "<link rel='stylesheet' href='css/sweet-alert.css'>";
-echo "<link rel='stylesheet' href='css/zzsc.css'>";
+echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";
+echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
+echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
+echo "<link rel='stylesheet' href='../../resources/css/zzsc.css'>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
@@ -90,6 +90,6 @@ echo "</div>"; // commande_dibe
 
 
 echo "</div>"; // page
-echo "<script src='javascript/jquery-3.2.1.min.js'></script>";
-echo "<script src='javascript/javascript.js'></script>";
-echo "<script src='javascript/sweet-alert.js'></script>";
+echo "<script src='../../resources/javascript/jquery-3.2.1.min.js'></script>";
+echo "<script src='../../resources/javascript/javascript.js'></script>";
+echo "<script src='../../resources/javascript/sweet-alert.js'></script>";

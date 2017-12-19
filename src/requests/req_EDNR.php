@@ -1,7 +1,7 @@
 <?php 
 // error_reporting(E_ALL || ~E_NOTICE);
 ini_set("max_execution_time", 0);
-require "../config/config.php";
+require "../../config/config.php";
 require "file_request.php";
 
 /********* Connexion de la Base de données associées *********/
