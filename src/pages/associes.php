@@ -52,22 +52,22 @@ echo "<div class='api'>";
 echo "<div class='api_base'>";
 echo "<div class='title_api'>API de base</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='src/api/api_base_statut.php?siren=$siren' target='_blank'>l’état</a>";
+echo "<a class='api_lien list' href='../api/api_base_statut.php?siren=$siren' target='_blank'>l’état</a>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='src/api/api_base_bdirects.php?siren=$siren' target='_blank'>associés</a><br>";
+echo "<a class='api_lien list' href='../api/api_base_bdirects.php?siren=$siren' target='_blank'>associés</a><br>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";
 echo "</div>";
 echo "<div class='api_commercant'>";
 echo "<div class='title_api'>API commerçante</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='src/api/api_statut.php?siren=$siren' target='_blank'>l'état</a><br>";
+echo "<a class='api_lien list' href='../api/api_statut.php?siren=$siren' target='_blank'>l'état</a><br>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";
 echo "<div class='block_api button_with_icon'>";
-echo "<a class='api_lien list' href='src/api/api_associe.php?siren=$siren' target='_blank'>associés</a><br>";
+echo "<a class='api_lien list' href='../api/api_associe.php?siren=$siren' target='_blank'>associés</a><br>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
 echo "</div>";//block_api
 
