@@ -73,9 +73,6 @@ a:hover, a:focus {
 }
 
 .block {
-    /* border: 1px solid #ccc; */
-    /* border-radius: 3px; */
-    /* margin: 20px auto; */
     padding: 30px 0;
 }
 
@@ -244,14 +241,14 @@ a.api_lien{
 }
 
 /********************** Page Requêtes **********************/
-.title_requestes, .title_dibe {
+.title_requestes, .title_dibe, .title_apitest {
     text-align: center;
     color: var(--text-blue);
     font-size: 25;
     font-weight: bold;
 }
 
-.title_requeste {
+.title_block {
     text-align: center;
     color: var(--color-white);
     background-color: var(--title-green);
@@ -522,6 +519,37 @@ a.api_lien{
     left: 0;
     text-decoration: none;
 }
+
+/********************** Page Api Test **********************/
+#loadinggif_api_FI, #loadinggif_api_Rep, #loadinggif_api_CA, #loadinggif_api_ER, #loadinggif_api_PC {
+    display: none;
+}
+
+.api_input_block {
+    display: flex;
+    justify-content: center;
+}
+
+.api_input_title {
+    left: -10px;
+    line-height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-blue);
+}
+
+.api_input_text {
+    padding: 10px 20px;
+    text-align: left;
+    border: 1px solid var(--color-white);
+    border-radius: 8px;
+    height: 35px;
+}
+
+.api_link {
+    text-align: center;
+}
+
 /********************** Color **********************/
 
 :root{

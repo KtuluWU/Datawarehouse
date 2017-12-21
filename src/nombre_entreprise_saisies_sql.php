@@ -17,8 +17,8 @@ function stocker_data_1($db_conn, $date, $nombre) {
 }
 
 echo "<div class='pm-saisies block'>";
-echo "<div class='title_requeste text-rouge'>Tu trouves la page secretète!</div>";
-echo "<div class='title_requeste'>Nombre de Sociétés saisies non rejetées</div>";
+echo "<div class='title_block text-rouge'>Tu trouves la page secretète!</div>";
+echo "<div class='title_block'>Nombre de Sociétés saisies non rejetées</div>";
 echo "<div class='content_requeste'>$count_ass</div>";
 stocker_data_1($db_conn_mysql, $data_today, $count_ass);
 echo "Jusqu'à <a class='text-rouge'>".$data_today."</a>";

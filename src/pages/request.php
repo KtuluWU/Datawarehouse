@@ -31,7 +31,7 @@ $query_saisie_ass = pg_query($dbtest2, "select count(distinct idpm) from public.
 $count_ass = pg_fetch_all($query_saisie_ass)[0]["count"];
 // $data_today = date("Y-m-d");
 echo "<div class='pm-saisies block light' id='pm-saisies'>";
-echo "<div class='title_requeste'>Nombre de Sociétés saisies non rejetées</div>";
+echo "<div class='title_block'>Nombre de Sociétés saisies non rejetées</div>";
 echo "<div class='content_requeste'>$count_ass</div>";
 // echo "Jusqu'à <a class='text-rouge'>".$data_today."</a>";
 echo "<div class='text-rouge tip_ns'>( À partir du 2017-11-11 )</div>";
@@ -41,33 +41,33 @@ echo "</div>"; //pm-saisies
 
 /****************************************** Entreprises reçues ******************************************/
 echo "<div class='entreprise-recues block dark'>";
-echo "<div class='title_requeste'>Entreprises reçues</div>";
+echo "<div class='title_block'>Entreprises reçues</div>";
 echo_input('select_er', 'form_entreprise_recue', 'input_er cald', 'date_er1', 'date_er2', 'button_ER', 'send_date_er()', 'response_ER', 'loadinggif_er');
 echo "</div>";
 
 /****************************************** Entreprises demandées en saisie ******************************************/
 echo "<div class='entreprise-demandees block light'>";
-echo "<div class='title_requeste'>Entreprises demandées en saisie</div>";
+echo "<div class='title_block'>Entreprises demandées en saisie</div>";
 echo_input('select_ed', 'form_entreprise_demandees', 'input_ed cald', 'date_ed1', 'date_ed2', 'button_ED', 'send_date_ed()', 'response_ED', 'loadinggif_ed');
 echo "</div>";
 
 /****************************************** Rejets reçus ******************************************/
 echo "<div class='rejets-recus block dark'>";
-echo "<div class='title_requeste'>Rejets reçus</div>";
+echo "<div class='title_block'>Rejets reçus</div>";
 echo_input('select_rj', 'form_entreprise_rejets', 'input_rj cald', 'date_rj1', 'date_rj2', 'button_RJ', 'send_date_rj()', 'response_RJ', 'loadinggif_rj');
 echo "</div>";
 
 /****************************************** Entreprise demandées en saisie non répondues ******************************************/
 echo "<div class='entreprise-demandee-nonrepondues block light'>";
-echo "<div class='title_requeste'>Entreprise demandées en saisie non répondues</div>";
-echo "<div class='title_requeste text-rouge'>En attendant de refaire</div>";
+echo "<div class='title_block'>Entreprise demandées en saisie non répondues</div>";
+echo "<div class='title_block text-rouge'>En attendant de refaire</div>";
 echo_input('select_ednr', 'form_entreprise_dnr', 'input_ednr cald', 'date_ednr1', 'date_ednr2', 'button_EDNR', 'send_date_ednr()', 'response_EDNR', 'loadinggif_ednr');
 echo "</div>";
 
 /****************************************** SIREN traitement ******************************************/
 
 echo "<div class='siern-traitement block dark'>";
-echo "<div class='title_requeste'>SIREN traitement</div>";
+echo "<div class='title_block'>SIREN traitement</div>";
 echo "<form action='' method='POST' enctype='multipart/form-data'>";
 echo "<div class='upload'>";
 echo "Téléchargez un fichier <label class='text-rouge'>.csv</label>: ";
