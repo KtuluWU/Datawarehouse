@@ -1,7 +1,7 @@
 <?php 
 // error_reporting(E_ALL || ~E_NOTICE);
 ini_set("max_execution_time", 0);
-require "../config/config.php";
+require "../../config/config.php";
 require "file_request.php";
 
 /********* Connexion de la Base de données associées *********/
@@ -20,7 +20,7 @@ $liste_er = pg_fetch_all($query_suividem_er);
 export_csv($liste_er,"liste_er");
 
 echo "<div class='list_er button_with_icon'>";
-echo "<a class='list' href='../associe/csv/liste_er.csv' target='_blank'>Export</a>";
+echo "<a class='list' href='../../csv/liste_er.csv' target='_blank'>Export</a>";
 echo "<label><i class='material-icons icon-search'>file_download</i></label>";
 echo "</div>";
 

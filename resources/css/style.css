@@ -50,6 +50,14 @@ div {
     padding: 10px 0 10px 0;
 }
 
+form {
+    margin-bottom: 0;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+
 .page {
     width: 60%;
     margin: 0 auto;
@@ -65,13 +73,10 @@ div {
 }
 
 .block {
-    /* border: 1px solid #ccc; */
-    /* border-radius: 3px; */
-    /* margin: 20px auto; */
     padding: 30px 0;
 }
 
-.button_request, .button_dibe {
+.button_request, .button_dibe, .button_apitest {
     font-size: 16;
     color: var(--text-blue);
     transition: 0.5s;
@@ -98,6 +103,7 @@ div {
 }
 
 .top {
+    margin-top: 20px;
     text-align: center;
     border: 1px solid var(--backgroudcolor-light);
     border-radius: 20px;
@@ -143,6 +149,40 @@ div {
     padding: 20px;
     border: 1px solid var(--backgroudcolor-light);
     border-radius: 20px;
+}
+
+.content_index {
+    padding: 60px 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link_left {
+    line-height: 52px;
+    padding: 40px 0;
+}
+
+.link_right {
+    line-height: 200px;
+    padding: 0;
+}
+
+.link_index {
+    width: 200px;
+    height: 200px;
+    margin: 30px 0;
+    text-align: center;
+    font-size: 30px;
+    color: var(--text-blue);
+    background-color: var(--backgroudcolor-dark);
+    border: 1px solid var(--backgroudcolor-dark);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.link_index:hover {
+    box-shadow: 10px 10px 30px var(--text-blue);
 }
 
 .api {
@@ -201,14 +241,14 @@ a.api_lien{
 }
 
 /********************** Page Requêtes **********************/
-.title_requestes, .title_dibe {
+.title_requestes, .title_dibe, .title_apitest {
     text-align: center;
     color: var(--text-blue);
     font-size: 25;
     font-weight: bold;
 }
 
-.title_requeste {
+.title_block {
     text-align: center;
     color: var(--color-white);
     background-color: var(--title-green);
@@ -286,6 +326,7 @@ a.api_lien{
     z-index: 999;
     position: relative;
     left: 10px;
+    cursor: pointer;
 
 }
 
@@ -444,6 +485,13 @@ a.api_lien{
     color: var(--text-blue);
 }
 
+.info_input {
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--title-green);
+}
+
 .input_dibe {
     line-height: 30px;
 }
@@ -459,6 +507,47 @@ a.api_lien{
 
 .input_text_dibe_upload {
     padding-top: 6px;
+}
+
+.back_forward_lien {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.back_dibe {
+    left: 0;
+    text-decoration: none;
+}
+
+/********************** Page Api Test **********************/
+#loadinggif_api_FI, #loadinggif_api_Rep, #loadinggif_api_CA, #loadinggif_api_ER, #loadinggif_api_PC {
+    display: none;
+}
+
+.api_input_block {
+    display: flex;
+    justify-content: center;
+}
+
+.api_input_title {
+    left: -10px;
+    line-height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-blue);
+}
+
+.api_input_text {
+    padding: 10px 20px;
+    text-align: left;
+    border: 1px solid var(--color-white);
+    border-radius: 8px;
+    height: 35px;
+}
+
+.api_link {
+    text-align: center;
 }
 
 /********************** Color **********************/

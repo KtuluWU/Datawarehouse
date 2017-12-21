@@ -1,3 +1,27 @@
+function navigateTo_index_for_index() {
+    this.location.href = 'index.php';
+}
+
+function navigateTo_index() {
+    this.location.href = '../../index.php';
+}
+
+function navigateTo_associes() {
+    this.location.href = 'src/pages/associes.php';
+}
+
+function navigateTo_request() {
+    this.location.href = 'src/pages/request.php';
+}
+
+function navigateTo_dibe() {
+    this.location.href = 'src/pages/dibe.php';
+}
+
+function navigateTo_apitest() {
+    this.location.href = 'src/pages/apitest.php';
+}
+
 function check_siren() {
     var siren = document.getElementById("input_text_siren").value;
     var len_siren = siren.length;
@@ -41,10 +65,10 @@ function check_dibe() {
         swal("Oops...", "Le mot de passe ne peut pas être vide!", "error");
         return false;
     }
-    else if (ref != "" && ref.length < 8) {
+    /* else if (ref != "" && ref.length < 8) {
         swal("Oops...", "La référence non disponible!", "error");
         return false;
-    }
+    } */
     else if (file == "") {
         swal("Oops...", "Le fichier est obligatoire!", "error");
         return false;
@@ -64,7 +88,7 @@ function check_date(str_date_1, str_date_2) {
         swal("Oops...", "La durée ne peut pas être dépassée un an!", "warning");
         return false;
     }
-    else if (isNaN(date1_year) || isNaN(date2_year) || date1_year==null || date2_year==null) {
+    else if (isNaN(date1_year) || isNaN(date2_year) || date1_year == null || date2_year == null) {
         swal("Oops...", "Date non disponible!", "error");
         return false;
     }
@@ -77,10 +101,25 @@ function check_date(str_date_1, str_date_2) {
     }
 }
 
-function ajax_send_date(msg, date1, date2, req_file, loadinggif) {
+function ajax_send_date(bool_url_and_data, bool_api, msg, data, req_file, loadinggif) {
 
-    var url = "../associe/requests/" + req_file + ".php";
-    var postdate = "date1=" + date1 + "&date2=" + date2;
+    if (bool_url_and_data) {
+        var url = "../requests/" + req_file + ".php";
+        var postdate = "date1=" + data["date1"] + "&date2=" + data["date2"];
+    }
+    else if (!bool_url_and_data && bool_api==1) {
+        var url = "../api_test/" + req_file + ".php";
+        var postdate = "siren_apitest=" + data["siren"];
+    }
+    else if (!bool_url_and_data && bool_api==2) {
+        var url = "../api_test/" + req_file + ".php";
+        var postdate = "siren_apitest=" + data["siren"] + "&bilan_apitest=" + data["bilan"];
+    }
+    else if (!bool_url_and_data && bool_api==3) {
+        var url = "../api_test/" + req_file + ".php";
+        var postdate = "nom_apitest=" + data["nom"] + "&prenom_apitest=" + data["prenom"] + "&naissance_apitest=" + data["naissance"];
+    }
+    
 
     var ajax = false;
     //初始化XMLHttpRequest对象
@@ -120,17 +159,62 @@ function ajax_send_date(msg, date1, date2, req_file, loadinggif) {
             // alert("返回信息： " + ajax.responseText);
         }
     }
-
+}
+/*************************** API Test ***************************/
+function send_data_apitest_FI() {
+    document.getElementById("loadinggif_api_FI").style.display = "block";
+    var msg = document.getElementById("response_area_api_FI");
+    var siren = document.api_form_FI.api_siren_FI.value;
+    var data = {"siren":siren};
+    this.ajax_send_date(false, 1, msg, data, "FicheIdentite", "loadinggif_api_FI")
 }
 
+function send_data_apitest_Rep() {
+    document.getElementById("loadinggif_api_Rep").style.display = "block";
+    var msg = document.getElementById("response_area_api_Rep");
+    var siren = document.api_form_Rep.api_siren_Rep.value;
+    var data = {"siren":siren};
+    this.ajax_send_date(false, 1, msg, data, "Representants", "loadinggif_api_Rep")
+}
+
+function send_data_apitest_CA() {
+    document.getElementById("loadinggif_api_CA").style.display = "block";
+    var msg = document.getElementById("response_area_api_CA");
+    var siren = document.api_form_CA.api_siren_CA.value;
+    var bilan = document.api_form_CA.api_bilan_CA.value;
+    var data = {"siren":siren, "bilan":bilan};
+    this.ajax_send_date(false, 2, msg, data, "ComptesAnnuels", "loadinggif_api_CA")
+}
+
+function send_data_apitest_ER() {
+    document.getElementById("loadinggif_api_ER").style.display = "block";
+    var msg = document.getElementById("response_area_api_ER");
+    var nom = document.api_form_ER.api_ER_nom.value;
+    var prenom = document.api_form_ER.api_ER_prenom.value;
+    var naissance = document.api_form_ER.api_ER_naissance.value;
+    var data = {"nom":nom, "prenom":prenom, "naissance":naissance};
+    this.ajax_send_date(false, 3, msg, data, "EntrepriseRepresentants", "loadinggif_api_ER")
+}
+
+function send_data_apitest_PC() {
+    document.getElementById("loadinggif_api_PC").style.display = "block";
+    var msg = document.getElementById("response_area_api_PC");
+    var siren = document.api_form_PC.api_siren_PC.value;
+    var data = {"siren":siren};
+    this.ajax_send_date(false, 1, msg, data, "ProceduresCollectives", "loadinggif_api_PC")
+}
+
+
+/*************************** Request ***************************/
 function send_date_ns() {
     document.getElementById("loadinggif_ns").style.display = "block";
     var msg = document.getElementById("response_NS");
     var date1 = document.form_pm_saisies.date_ns1.value;
     var date2 = document.form_pm_saisies.date_ns2.value;
+    var data = {"date1":date1, "date2":date2};
     var check_date = this.check_date("date_ns1", "date_ns2");
     if (check_date) {
-        this.ajax_send_date(msg, date1, date2, "req_NS", "loadinggif_ns");
+        this.ajax_send_date(true, 0, msg, data, "req_NS", "loadinggif_ns");
     }
     else {
         return;
@@ -142,9 +226,10 @@ function send_date_er() {
     var msg = document.getElementById("response_ER");
     var date1 = document.form_entreprise_recue.date_er1.value;
     var date2 = document.form_entreprise_recue.date_er2.value;
+    var data = {"date1":date1, "date2":date2};
     var check_date = this.check_date("date_er1", "date_er2");
     if (check_date) {
-        this.ajax_send_date(msg, date1, date2, "req_ER", "loadinggif_er");
+        this.ajax_send_date(true, 0, msg, data, "req_ER", "loadinggif_er");
     }
     else {
         return;
@@ -156,9 +241,10 @@ function send_date_ed() {
     var msg = document.getElementById("response_ED");
     var date1 = document.form_entreprise_demandees.date_ed1.value;
     var date2 = document.form_entreprise_demandees.date_ed2.value;
+    var data = {"date1":date1, "date2":date2};
     var check_date = this.check_date("date_ed1", "date_ed2");
     if (check_date) {
-        this.ajax_send_date(msg, date1, date2, "req_ED", "loadinggif_ed");
+        this.ajax_send_date(true, 0, msg, data, "req_ED", "loadinggif_ed");
     }
     else {
         return;
@@ -170,9 +256,10 @@ function send_date_rj() {
     var msg = document.getElementById("response_RJ");
     var date1 = document.form_entreprise_rejets.date_rj1.value;
     var date2 = document.form_entreprise_rejets.date_rj2.value;
+    var data = {"date1":date1, "date2":date2};
     var check_date = this.check_date("date_rj1", "date_rj2");
     if (check_date) {
-        this.ajax_send_date(msg, date1, date2, "req_RJ", "loadinggif_rj");
+        this.ajax_send_date(true, 0, msg, data, "req_RJ", "loadinggif_rj");
     }
     else {
         return;
@@ -184,9 +271,10 @@ function send_date_ednr() {
     var msg = document.getElementById("response_EDNR");
     var date1 = document.form_entreprise_dnr.date_ednr1.value;
     var date2 = document.form_entreprise_dnr.date_ednr2.value;
+    var data = {"date1":date1, "date2":date2};
     var check_date = this.check_date("date_ednr1", "date_ednr2");
     if (check_date) {
-        this.ajax_send_date(msg, date1, date2, "req_EDNR", "loadinggif_ednr");
+        this.ajax_send_date(true, 0, msg, data, "req_EDNR", "loadinggif_ednr");
     }
     else {
         return;
@@ -202,5 +290,12 @@ $(document).ready(function () {
         var scroll_offset1 = $("#pm-saisies").offset();
         $("html,body").animate({ scrollTop: scroll_offset1.top }, 500);
     });
-
 });
+
+/* $(function(){
+    $('#api_FI_siren').on('input propertychange', function () {
+        var result = $(this).val();
+        console.log(result);
+        $('#FI_link').html(result);
+    });
+}); */

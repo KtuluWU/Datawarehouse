@@ -15,7 +15,7 @@ The format like this:
  
 I used two datebases in this project: MySQL and PostgreSQL.  
 ``$token_test`` is your key of Datainfogreffe.  
-And, you need also create two folders: ``csv`` and ``upload`` for the files export and upload.  
+And, you need also create two folders: ``csv`` and ``upload`` for the files export and upload, as well as, ``python``and``python_zip`` for the generated files by python program, and export.
  
 * * *
  
@@ -33,4 +33,4 @@ And, you need also create two folders: ``csv`` and ``upload`` for the files expo
  
 这里我使用了两个数据库，分别是MySQL和PostgreSQL。  
 ``$token_test``是你的Datainfogreffe的密钥。  
-然后，你需要创建两个空的文件夹：``csv``和``upload``用来存储导出和上传的文件。
+然后，你需要创建两个空的文件夹：``csv``和``upload``用来存储导出和上传的文件, 并且创建``python``和``python_zip``文件夹用来存储``python``程序生成的文件并导出。
