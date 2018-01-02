@@ -59,7 +59,7 @@ $ref = $_POST['input_dibe_ref'];
 $identification = $numclient.$numutilis."-".$mdp."-".$ref;
 
 
-if ($numclient != null && $numutilis != null && $mdp != null && $_FILES["input_dibe_csv"]["type"] == "text/csv") {
+if ($numclient != null && $numutilis != null && $mdp != null) {
     /* echo "n° client: $numclient</br>";
     echo "n° utilisateur: $numutilis</br>";
     echo "mot de passe: $mdp</br>";
