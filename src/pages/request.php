@@ -92,47 +92,47 @@ function siren_check($siren_r) {    //Pour vérifier si tous les siren sont comp
     return $siren_new_r;
 }
 
-if ($_FILES["file"]["type"] == "text/csv") {
-  if ($_FILES["file"]["error"] > 0)
-  {
-    echo "<div class='error_file'>Error: " . $_FILES["file"]["error"] . "</div>";
-  }
-  else {
-    $filename=$_FILES['file']["name"];
-    $type=$_FILES['file']["type"];
-    $tmp_name=$_FILES['file']["tmp_name"];
-    $size=$_FILES['file']["size"];
-    $error=$_FILES['file']["error"];
-    $url_file = "../../";
 
-    move_uploaded_file($tmp_name, $url_file."upload/".$filename);
-    
-    echo "Nom du fichier: <label class='text-rouge'>$filename</label><br>";
-    $file_csv = fopen($url_file."upload/".$filename,"r");
-    $siren_doc_r = array();
-    while(!feof($file_csv))
-    {
-      array_push($siren_doc_r, fgetcsv($file_csv)[0]);
-    }
-    $siren_traite = siren_check($siren_doc_r);
-    $statut_r = [];
-
-    for ($i=0;$i<sizeof($siren_traite);$i++) {
-      $statut = json_decode(api_statut($siren_traite[$i], $token_test), true)["Code"];
-      $statut_trans = code_trans($statut);
-      array_push($statut_r, array("Siren"=>$siren_traite[$i],"Statut"=>$statut_trans));
-    }
-    fclose($file_csv);
-    export_siren_traite($statut_r, "statut");
-    
-    
-    unlink($url_file."upload/$filename");
-    echo "<div class='statut button_with_icon'>";
-    echo "<a class='list' href='../../csv/statut.csv' target='_blank'>Export</a>";
-    echo "<label><i class='material-icons icon-search'>get_app</i></label>";
-    echo "</div>";
-  }
+if ($_FILES["file"]["error"] > 0)
+{
+  echo "<div class='error_file'>Error: " . $_FILES["file"]["error"] . "</div>";
 }
+else {
+  $filename=$_FILES['file']["name"];
+  $type=$_FILES['file']["type"];
+  $tmp_name=$_FILES['file']["tmp_name"];
+  $size=$_FILES['file']["size"];
+  $error=$_FILES['file']["error"];
+  $url_file = "../../";
+
+  move_uploaded_file($tmp_name, $url_file."upload/".$filename);
+  
+  echo "Nom du fichier: <label class='text-rouge'>$filename</label><br>";
+  $file_csv = fopen($url_file."upload/".$filename,"r");
+  $siren_doc_r = array();
+  while(!feof($file_csv))
+  {
+    array_push($siren_doc_r, fgetcsv($file_csv)[0]);
+  }
+  $siren_traite = siren_check($siren_doc_r);
+  $statut_r = [];
+
+  for ($i=0;$i<sizeof($siren_traite);$i++) {
+    $statut = json_decode(api_statut($siren_traite[$i], $token_test), true)["Code"];
+    $statut_trans = code_trans($statut);
+    array_push($statut_r, array("Siren"=>$siren_traite[$i],"Statut"=>$statut_trans));
+  }
+  fclose($file_csv);
+  export_siren_traite($statut_r, "statut");
+  
+  
+  unlink($url_file."upload/$filename");
+  echo "<div class='statut button_with_icon'>";
+  echo "<a class='list' href='../../csv/statut.csv' target='_blank'>Export</a>";
+  echo "<label><i class='material-icons icon-search'>get_app</i></label>";
+  echo "</div>";
+}
+
 
 
 echo "</div>";
