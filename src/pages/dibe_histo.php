@@ -51,7 +51,7 @@ function check_statut($statut) {
     if ($statut != null && $statut != "") {
         switch($statut) {
             case 0:
-                return "Commande bien exécuté";
+                return "Commande bien exécutée";
                 break;
             case 1:
                 return "<label class='text-rouge'>Impossible d’ouvrir le fichier csv</label>";
