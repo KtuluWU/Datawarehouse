@@ -83,8 +83,10 @@ function check_date(str_date_1, str_date_2) {
     var date_2 = document.getElementById(str_date_2).value;
     var date1_year = date_1.slice(0, 4);
     var date2_year = date_2.slice(0, 4);
+    var date1_month = date_1.slice(5, 7);
+    var date2_month = date_2.slice(5, 7);
 
-    if (date2_year > date1_year) {
+    if ((date2_year - date1_year > 1) || ((date1_year < date2_year) && (date1_month < date2_month))) {
         swal("Oops...", "La durée ne peut pas être dépassée un an!", "warning");
         return false;
     }
@@ -107,19 +109,19 @@ function ajax_send_date(bool_url_and_data, bool_api, msg, data, req_file, loadin
         var url = "../requests/" + req_file + ".php";
         var postdate = "date1=" + data["date1"] + "&date2=" + data["date2"];
     }
-    else if (!bool_url_and_data && bool_api==1) {
+    else if (!bool_url_and_data && bool_api == 1) {
         var url = "../api_test/" + req_file + ".php";
         var postdate = "siren_apitest=" + data["siren"];
     }
-    else if (!bool_url_and_data && bool_api==2) {
+    else if (!bool_url_and_data && bool_api == 2) {
         var url = "../api_test/" + req_file + ".php";
         var postdate = "siren_apitest=" + data["siren"] + "&bilan_apitest=" + data["bilan"];
     }
-    else if (!bool_url_and_data && bool_api==3) {
+    else if (!bool_url_and_data && bool_api == 3) {
         var url = "../api_test/" + req_file + ".php";
         var postdate = "nom_apitest=" + data["nom"] + "&prenom_apitest=" + data["prenom"] + "&naissance_apitest=" + data["naissance"];
     }
-    
+
 
     var ajax = false;
     //初始化XMLHttpRequest对象
@@ -165,7 +167,7 @@ function send_data_apitest_FI() {
     document.getElementById("loadinggif_api_FI").style.display = "block";
     var msg = document.getElementById("response_area_api_FI");
     var siren = document.api_form_FI.api_siren_FI.value;
-    var data = {"siren":siren};
+    var data = { "siren": siren };
     this.ajax_send_date(false, 1, msg, data, "FicheIdentite", "loadinggif_api_FI")
 }
 
@@ -173,7 +175,7 @@ function send_data_apitest_Rep() {
     document.getElementById("loadinggif_api_Rep").style.display = "block";
     var msg = document.getElementById("response_area_api_Rep");
     var siren = document.api_form_Rep.api_siren_Rep.value;
-    var data = {"siren":siren};
+    var data = { "siren": siren };
     this.ajax_send_date(false, 1, msg, data, "Representants", "loadinggif_api_Rep")
 }
 
@@ -182,7 +184,7 @@ function send_data_apitest_CA() {
     var msg = document.getElementById("response_area_api_CA");
     var siren = document.api_form_CA.api_siren_CA.value;
     var bilan = document.api_form_CA.api_bilan_CA.value;
-    var data = {"siren":siren, "bilan":bilan};
+    var data = { "siren": siren, "bilan": bilan };
     this.ajax_send_date(false, 2, msg, data, "ComptesAnnuels", "loadinggif_api_CA")
 }
 
@@ -192,7 +194,7 @@ function send_data_apitest_ER() {
     var nom = document.api_form_ER.api_ER_nom.value;
     var prenom = document.api_form_ER.api_ER_prenom.value;
     var naissance = document.api_form_ER.api_ER_naissance.value;
-    var data = {"nom":nom, "prenom":prenom, "naissance":naissance};
+    var data = { "nom": nom, "prenom": prenom, "naissance": naissance };
     this.ajax_send_date(false, 3, msg, data, "EntrepriseRepresentants", "loadinggif_api_ER")
 }
 
@@ -200,7 +202,7 @@ function send_data_apitest_PC() {
     document.getElementById("loadinggif_api_PC").style.display = "block";
     var msg = document.getElementById("response_area_api_PC");
     var siren = document.api_form_PC.api_siren_PC.value;
-    var data = {"siren":siren};
+    var data = { "siren": siren };
     this.ajax_send_date(false, 1, msg, data, "ProceduresCollectives", "loadinggif_api_PC")
 }
 
@@ -211,7 +213,7 @@ function send_date_ns() {
     var msg = document.getElementById("response_NS");
     var date1 = document.form_pm_saisies.date_ns1.value;
     var date2 = document.form_pm_saisies.date_ns2.value;
-    var data = {"date1":date1, "date2":date2};
+    var data = { "date1": date1, "date2": date2 };
     var check_date = this.check_date("date_ns1", "date_ns2");
     if (check_date) {
         this.ajax_send_date(true, 0, msg, data, "req_NS", "loadinggif_ns");
@@ -226,7 +228,7 @@ function send_date_er() {
     var msg = document.getElementById("response_ER");
     var date1 = document.form_entreprise_recue.date_er1.value;
     var date2 = document.form_entreprise_recue.date_er2.value;
-    var data = {"date1":date1, "date2":date2};
+    var data = { "date1": date1, "date2": date2 };
     var check_date = this.check_date("date_er1", "date_er2");
     if (check_date) {
         this.ajax_send_date(true, 0, msg, data, "req_ER", "loadinggif_er");
@@ -241,7 +243,7 @@ function send_date_ed() {
     var msg = document.getElementById("response_ED");
     var date1 = document.form_entreprise_demandees.date_ed1.value;
     var date2 = document.form_entreprise_demandees.date_ed2.value;
-    var data = {"date1":date1, "date2":date2};
+    var data = { "date1": date1, "date2": date2 };
     var check_date = this.check_date("date_ed1", "date_ed2");
     if (check_date) {
         this.ajax_send_date(true, 0, msg, data, "req_ED", "loadinggif_ed");
@@ -256,7 +258,7 @@ function send_date_rj() {
     var msg = document.getElementById("response_RJ");
     var date1 = document.form_entreprise_rejets.date_rj1.value;
     var date2 = document.form_entreprise_rejets.date_rj2.value;
-    var data = {"date1":date1, "date2":date2};
+    var data = { "date1": date1, "date2": date2 };
     var check_date = this.check_date("date_rj1", "date_rj2");
     if (check_date) {
         this.ajax_send_date(true, 0, msg, data, "req_RJ", "loadinggif_rj");
@@ -271,7 +273,7 @@ function send_date_ednr() {
     var msg = document.getElementById("response_EDNR");
     var date1 = document.form_entreprise_dnr.date_ednr1.value;
     var date2 = document.form_entreprise_dnr.date_ednr2.value;
-    var data = {"date1":date1, "date2":date2};
+    var data = { "date1": date1, "date2": date2 };
     var check_date = this.check_date("date_ednr1", "date_ednr2");
     if (check_date) {
         this.ajax_send_date(true, 0, msg, data, "req_EDNR", "loadinggif_ednr");
