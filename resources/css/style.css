@@ -76,6 +76,12 @@ a:hover, a:focus {
     padding: 30px 0;
 }
 
+.error_null {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .button_request, .button_dibe, .button_apitest {
     font-size: 16;
     color: var(--text-blue);

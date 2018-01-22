@@ -1,6 +1,7 @@
 <?php
 
-function echo_input($class_block, $form_id_name, $class_input, $date1, $date2, $button, $function_ajax, $response_area, $loadinggif) {
+function echo_input($class_block, $form_id_name, $class_input, $date1, $date2, $button, $function_ajax, $response_area, $loadinggif)
+{
     echo "<div class='$class_block'>";
     echo "<form id='$form_id_name' name='$form_id_name' action='' method='post'>";
     echo "<div class='$class_input'>";
@@ -25,7 +26,8 @@ function echo_input($class_block, $form_id_name, $class_input, $date1, $date2, $
     echo "<div class='$response_area' id='$response_area'></div>";
 }
 
-function echo_api($class_input, $form_id_name, $api_input_data, $api_button, $function_ajax, $loadinggif, $response_area, $bool_api) {
+function echo_api($class_input, $form_id_name, $api_input_data, $api_button, $function_ajax, $loadinggif, $response_area, $bool_api)
+{
     $api_siren = $api_input_data["api_siren"];
     $api_bilan = $api_input_data["api_bilan"];
     $api_ER_nom = $api_input_data["api_ER_nom"];
@@ -42,7 +44,7 @@ function echo_api($class_input, $form_id_name, $api_input_data, $api_button, $fu
             echo "</div>"; //api_input_siren
             echo "</div>"; //class_input
             break;
-        case 1: 
+        case 1:
             echo "<div class='$class_input'>";
             echo "<form id='$form_id_name' name='$form_id_name' action='' method='post'>";
             echo "<div class='api_input_siren api_input_block'>";
@@ -92,9 +94,10 @@ function echo_api($class_input, $form_id_name, $api_input_data, $api_button, $fu
     echo "<div class='$response_area' id='$response_area'></div>";
 }
 
-function export_siren_traite($data,$file_name) {
-    
-    $fp = fopen ("../../csv/$file_name.csv","w");
+function export_siren_traite($data, $file_name)
+{
+
+    $fp = fopen("../../csv/$file_name.csv", "w");
     $header_data = array("Siren", "Disponibilite");
     fputcsv($fp, $header_data);
 
@@ -104,7 +107,8 @@ function export_siren_traite($data,$file_name) {
     fclose($fp);
 }
 
-function api_statut($p_siren, $p_token) {
+function api_statut($p_siren, $p_token)
+{
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://api.datainfogreffe.fr/api/v1/Entreprise/RepartitionCapitalStatus?siren=$p_siren&token=$p_token");
     curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -112,13 +116,27 @@ function api_statut($p_siren, $p_token) {
     $res = curl_exec($ch);
     curl_close($ch);
     return $res;
-  }
-  
-function code_trans($code_statut) {
-    if ($code_statut=="404") {
+}
+
+function code_trans($code_statut)
+{
+    if ($code_statut == "404") {
         return "Non";
-    }
-    else if ($code_statut=="200") {
+    } else if ($code_statut == "200") {
         return "Oui";
     }
+}
+
+/** check upload */
+function empty_dir($directory)
+{
+    $handle = opendir($directory);
+    while (($file = readdir($handle)) !== false) {
+        if ($file != "." && $file != ".." && $file != ".DS_Store") {
+            closedir($handle);
+            return false;
+        }
+    }
+    closedir($handle);
+    return true;
 }

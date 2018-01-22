@@ -1,5 +1,5 @@
-<?php 
-// error_reporting(E_ALL || ~E_NOTICE);
+<?php
+error_reporting(E_ALL || ~E_NOTICE);
 require "../../config/config.php";
 
 /****************************************** Page ******************************************/
@@ -37,12 +37,12 @@ echo "<input class='button_chercher' type='submit' value='Chercher' id='button_s
 echo "<label><i class='material-icons icon-search'>search</i></label>";
 echo "</div>";
 echo "</form>";
-echo "</div>";//input_usr
+echo "</div>"; //input_usr
 
-$siren = $_POST['input_text_siren']; 
-if ($siren!=null) {
+$siren = $_POST['input_text_siren'];
+if ($siren != null) {
     echo "<div class='siren_display'>";
-    echo "Siren: <label class='text-rouge'>".$siren."</label>";
+    echo "Siren: <label class='text-rouge'>" . $siren . "</label>";
     echo "</div>";
 }
 echo "</div>";
@@ -69,24 +69,38 @@ echo "</div>";
 echo "<div class='block_api button_with_icon'>";
 echo "<a class='api_lien list' href='../api/api_associe.php?siren=$siren' target='_blank'>associés</a><br>";
 echo "<label><i class='material-icons icon-search'>done</i></label>";
-echo "</div>";//block_api
+echo "</div>"; //block_api
 
-echo "</div>";//api_commercant
-echo "</div>";//api
+echo "</div>"; //api_commercant
+echo "</div>"; //api
 
 /*********************   Connecter la base de données associées TEST2   *********************/
+try {
+    $db_pg_test2 = new PDO($pg_pdo_conn_string);
+} catch (PDOException $e) {
+    die("Connection failed! (数据库连接错误): " . $e->getMessage() . "<br/>");
+}
 
-$dbtest2 = pg_connect($pg_conn_string);
+$result = $db_pg_test2->prepare("SELECT * FROM public.ta_suividem_ass WHERE siren='$siren' ORDER BY dtdepot DESC");
+$result->execute();
+$res_pg = array();
+while ($fetch_res = $result->fetch(PDO::FETCH_ASSOC)) {
+    array_push($res_pg, $fetch_res);
+}
 
-$res = pg_query($dbtest2, "select * from public.ta_suividem_ass where siren='$siren' order by dtdepot DESC");
+/*
+Tous les pg_sql sont changés par PDO
+
+$res = pg_query($db_pg_test2, "select * from public.ta_suividem_ass where siren='$siren' order by dtdepot DESC");
 $fetch_res = pg_fetch_all($res);
-$sizetable = sizeof($fetch_res);
-// print_r($fetch_res);
+ */
+$sizetable = sizeof($res_pg);
 
 /********* Coderetour *********/
-function cr($cr, $denomination, $siren) {
+function cr($cr, $denomination, $siren)
+{
     if ($denomination != null && $cr != null && $siren != null) {
-        switch($cr) {
+        switch ($cr) {
             case 0:
                 return "Saisie non rejetée";
                 break;
@@ -132,27 +146,25 @@ function cr($cr, $denomination, $siren) {
             default:
                 return "Null";
         }
-    }
-    elseif ($denomination != null && $cr == null && $siren != null) {
+    } elseif ($denomination != null && $cr == null && $siren != null) {
         return "En cours";
-    }
-    elseif ($siren == null) {
+    } elseif ($siren == null) {
         return " ";
-    }
-    else {
+    } else {
         return "Non trouvé dans la base";
     }
-} 
+}
 
 /********* Résultat *********/
 
-function echo_res1($ress) {
-    $size = sizeof(pg_fetch_all($ress));
-    for($i=0; $i<$size; $i++) {
-        for ($j=0;$j<count(pg_fetch_all($ress)[$i]);$j++){
-            $key = array_keys(pg_fetch_all($ress)[$i]);
-            $value = array_values(pg_fetch_all($ress)[$i]);
-            echo $key[$j].": ".$value[$j]."<br>";
+function echo_res1($ress)
+{
+    $size = sizeof($ress);
+    for ($i = 0; $i < $size; $i++) {
+        for ($j = 0; $j < count($ress[$i]); $j++) {
+            $key = array_keys($ress[$i]);
+            $value = array_values($ress[$i]);
+            echo $key[$j] . ": " . $value[$j] . "<br>";
         }
         echo "<br>";
     }
@@ -160,67 +172,78 @@ function echo_res1($ress) {
 
 /********* Page *********/
 echo "<div class='divider'></div>";
+// echo $sizetable;
+if ($sizetable == 0 && $siren != null) {
+    echo "<div class='error_null'><label class='text-rouge'>Non trouvé dans la base!</label></div>";
+} else {
+    for ($i = 0; $i < $sizetable; $i++) {
+        $dtdepot = $res_pg[$i]["dtdepot"];
+        $dtdemande = $res_pg[$i]["dtdemande"];
+        $denomination = $res_pg[$i]["denomination"];
+        $coderetour = $res_pg[$i]["coderetour"];
+        $cr_des = cr($coderetour, $denomination, $siren);
+        $iddemext = $res_pg[$i]["iddemext"];
+        $numdepot = $res_pg[$i]["numdepot"];
+        $numacte = $res_pg[$i]["noacte"];
+        $dtacte = $res_pg[$i]["dtacte"];
+        $dtsaisie_dev = $res_pg[$i]["dtsaisie"];
 
-for ($i=0; $i<$sizetable; $i++) {
-    $dtdepot = pg_fetch_all($res)[$i]["dtdepot"];
-    $dtdemande = pg_fetch_all($res)[$i]["dtdemande"];
-    $denomination = pg_fetch_all($res)[$i]["denomination"];
-    $coderetour = pg_fetch_all($res)[$i]["coderetour"];
-    $cr_des = cr($coderetour, $denomination, $siren);
-    $iddemext = pg_fetch_all($res)[$i]["iddemext"];
-    $numdepot = pg_fetch_all($res)[$i]["numdepot"];
-    $numacte = pg_fetch_all($res)[$i]["noacte"];
-    $dtacte = pg_fetch_all($res)[$i]["dtacte"];
-    $dtsaisie_dev = pg_fetch_all($res)[$i]["dtsaisie"];
+        echo "<div class='data'>";
+        echo "<div class='title'>";
+        echo "Siren: $siren<br>";
+        echo "Date de dépôt: $dtdepot<br>";
+        echo "Dénomination: $denomination<br>";
+        if ($dtdemande != null) {
+            echo "Demandé en saisie le $dtdemande<br>";
+        }
+        echo "Numéro de dépôt: $numdepot<br>";
+        echo "Numéro d'acte: $numacte<br>";
+        echo "Date d'acte: $dtacte<br>";
+        echo "Date de saisie: $dtsaisie_dev<br>";
+        echo "État: <b class='text-rouge'>$cr_des</b><br>";
+        if ($coderetour != null) {
+            echo "CodeRetour: $coderetour<br>";
+        }
 
-    echo "<div class='data'>";
-    echo "<div class='title'>";
-    echo "Siren: $siren<br>";
-    echo "Date de dépôt: $dtdepot<br>";
-    echo "Dénomination: $denomination<br>";
-    if ($dtdemande != null) {
-        echo "Demandé en saisie le $dtdemande<br>";
-    }
-    echo "Numéro de dépôt: $numdepot<br>";
-    echo "Numéro d'acte: $numacte<br>";
-    echo "Date d'acte: $dtacte<br>";
-    echo "Date de saisie: $dtsaisie_dev<br>";
-    echo "État: <b class='text-rouge'>$cr_des</b><br>";
-    if ($coderetour != null) {
-        echo "CodeRetour: $coderetour<br>";
-    }
-
-    echo "</div>";
-    echo "<div class='divider_col'></div>";
-    echo "<div class='contenu'>";
-    if ($coderetour == null && $siren != null) {
-        echo "<div class='text-rouge'>";
-        echo "NULL";
         echo "</div>";
-    }
-    elseif ($coderetour == 0 && $siren != null) {
-        $res1 = pg_query($dbtest2, "select * from public.ta_associes where iddem='$iddemext'");
-        $size = sizeof(pg_fetch_all($res1));
-        $dtsaisie_ass = pg_fetch_all($res)[$i]["dtsaisie"];
-        echo "<div class='title_2'>";
-        echo "Nombre associé: $size <br>";
-        echo "Date de saisie: $dtsaisie_ass <br>";
-        echo "</div>";
-        echo_res1($res1);
-    }
-    elseif ($siren == null) {
-        echo " ";
-    }
-    else {
-        $res1 = pg_query($dbtest2, "select * from public.ta_associes_rejets where iddem='$iddemext'");
-        $dtsaisie_ass_rejet = pg_fetch_all($res)[$i]["dtsaisie"];
-        echo "<div class='title_2'>";
-        echo "Date de saisie: $dtsaisie_ass_rejet <br>";
-        echo "</div>";
-        echo_res1($res1);
-    }
+        echo "<div class='divider_col'></div>";
+        echo "<div class='contenu'>";
+        if ($coderetour == null && $siren != null) {
+            echo "<div class='text-rouge'>";
+            echo "NULL";
+            echo "</div>";
+        } elseif ($coderetour == 0 && $siren != null) {
+            $res1 = $db_pg_test2->prepare("SELECT * FROM public.ta_associes WHERE iddem='$iddemext'");
+            $res1->execute();
+            $res1_pg = array();
+            while ($fetch_res1 = $res1->fetch(PDO::FETCH_ASSOC)) {
+                array_push($res1_pg, $fetch_res1);
+            }
+            $size = sizeof($res1_pg);
+            $dtsaisie_ass = $res_pg[$i]["dtsaisie"];
+            echo "<div class='title_2'>";
+            echo "Nombre associé: $size <br>";
+            echo "Date de saisie: $dtsaisie_ass <br>";
+            echo "</div>";
+            echo_res1($res1_pg);
+        } elseif ($siren == null) {
+            echo " ";
+        } else {
+            $res1 = $db_pg_test2->prepare("SELECT * FROM public.ta_associes_rejets WHERE iddem='$iddemext'");
+            $res1->execute();
+            $res1_pg = array();
+            while ($fetch_res1 = $res1->fetch(PDO::FETCH_ASSOC)) {
+                array_push($res1_pg, $fetch_res1);
+            }
+            $dtsaisie_ass_rejet = $res_pg[$i]["dtsaisie"];
+            echo "<div class='title_2'>";
+            echo "Date de saisie: $dtsaisie_ass_rejet <br>";
+            echo "</div>";
+            echo_res1($res1_pg);
+        }
 
-    echo "</div></div>";
+        echo "</div></div>";
+    }
 }
 
 echo "<script src='../../resources/javascript/jquery-3.2.1.min.js'></script>";

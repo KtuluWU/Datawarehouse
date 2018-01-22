@@ -4,3 +4,6 @@ csv
 config
 test.py
 python_resultats.zip
+test*
+*test*
+*test
