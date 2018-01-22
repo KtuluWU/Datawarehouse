@@ -1,4 +1,4 @@
-<?php 
+<?php
 // error_reporting(E_ALL || ~E_NOTICE);
 require "config/config.php";
 
@@ -28,17 +28,6 @@ echo "<div class='link_right link_index' onclick='navigateTo_apitest()'>API Test
 echo "</div>"; //links_right
 
 echo "</div>"; // content_index
-
-
-
-
-
-
-
-
-
-
-
 
 echo "</div>"; // page
 echo "<script src='resources/javascript/jquery-3.2.1.min.js'></script>";

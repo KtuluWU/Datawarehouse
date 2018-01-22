@@ -5,11 +5,10 @@ You should create first of all a folder ``config``, and then create the config f
 The format like this:  
  
     <?php
-    $pg_conn_string = "host port dbname user password";
-    $mysqli_host = "localhost";
-    $mysqli_dbusername = "";
-    $mysqli_dbpassword = "";
-    $mysqli_dbname = "";
+    $pg_pdo_conn_string = "pgsql:host=;port=;dbname=;user=;password=";
+    $mysql_pdo_conn_hostdb = 'mysql:host=;dbname=';
+    $mysql_pdo_conn_user = '';
+    $mysql_pdo_conn_password = '';
 
     $token_test = "";
  
@@ -23,11 +22,10 @@ And, you need also create two folders: ``csv`` and ``upload`` for the files expo
 格式如下：  
  
     <?php
-    $pg_conn_string = "host port dbname user password";
-    $mysqli_host = "localhost";
-    $mysqli_dbusername = "";
-    $mysqli_dbpassword = "";
-    $mysqli_dbname = "";
+    $pg_pdo_conn_string = "pgsql:host=;port=;dbname=;user=;password=";
+    $mysql_pdo_conn_hostdb = 'mysql:host=;dbname=';
+    $mysql_pdo_conn_user = '';
+    $mysql_pdo_conn_password = '';
 
     $token_test = "";
  

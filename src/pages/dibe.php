@@ -1,5 +1,5 @@
 <?php 
-// error_reporting(E_ALL || ~E_NOTICE);
+error_reporting(E_ALL || ~E_NOTICE);
 ini_set("max_execution_time", 0);
 
 require "../../config/config.php";
@@ -58,13 +58,39 @@ $mdp = $_POST['input_dibe_mdp'];
 $ref = $_POST['input_dibe_ref'];
 $identification = $numclient.$numutilis."-".$mdp."-".$ref;
 
+/****************************************** Functions *****************************************/
+
+function unlink_dir_python() {
+    $url_file = "../../";
+    $file_python = $url_file."python";
+    $handler = opendir($file_python);
+    while (($filenamee = readdir($handler)) !== false) {//务必使用!==，防止目录下出现类似文件名“0”等情况  
+        if ($filenamee != "." && $filenamee != ".." && $filename != ".DS_Store") {  
+                $files[] = $filenamee ;  
+        }  
+    }  
+    closedir($handler); 
+    foreach($files as $v) {
+        unlink($url_file."python/$v");
+    } 
+}
+
+function addFileToZip($path,$zip){
+    $handler=opendir($path); //打开当前文件夹由$path指定。
+    while(($filename=readdir($handler))!==false){
+        if($filename != "." && $filename != ".." && $filename != ".DS_Store"){//文件夹文件名字为'.'和‘..’，不要对他们进行操作
+            if(is_dir($path."/".$filename)){// 如果读取的某个对象是文件夹，则递归
+                addFileToZip($path."/".$filename, $zip);
+            }else{ //将文件加入zip对象
+                $zip->addFile($path."/".$filename);
+            }
+        }
+    }
+    @closedir($path);
+}
+/**********************************************************************************************/
 
 if ($numclient != null && $numutilis != null && $mdp != null) {
-    /* echo "n° client: $numclient</br>";
-    echo "n° utilisateur: $numutilis</br>";
-    echo "mot de passe: $mdp</br>";
-    echo "référence: $ref</br>";
-    echo "identification: $identification</br>"; */
 
     if ($_FILES["input_dibe_csv"]["error"] > 0) {
       echo "<div class='error_file'>Error: " . $_FILES["input_dibe_csv"]["error"] . "</div>";
@@ -86,39 +112,14 @@ if ($numclient != null && $numutilis != null && $mdp != null) {
         
         exec($str_python, $return_array, $coderetour);
         unlink($url_file."upload/$filename");
-        function vide_file_python() {
-            $url_file = "../../";
-            $file_python = $url_file."python";
-            $handler = opendir($file_python);
-            while (($filenamee = readdir($handler)) !== false) {//务必使用!==，防止目录下出现类似文件名“0”等情况  
-                if ($filenamee != "." && $filenamee != "..") {  
-                        $files[] = $filenamee ;  
-                }  
-            }  
-            closedir($handler);
-            foreach($files as $v) {
-                unlink($url_file."python/$v");
-            } 
-        }
+
         /****************************************** Download *****************************************/
-        function addFileToZip($path,$zip){
-            $handler=opendir($path); //打开当前文件夹由$path指定。
-            while(($filename=readdir($handler))!==false){
-                if($filename != "." && $filename != ".."){//文件夹文件名字为'.'和‘..’，不要对他们进行操作
-                    if(is_dir($path."/".$filename)){// 如果读取的某个对象是文件夹，则递归
-                        addFileToZip($path."/".$filename, $zip);
-                    }else{ //将文件加入zip对象
-                        $zip->addFile($path."/".$filename);
-                    }
-                }
-            }
-            @closedir($path);
-        }
+        
         $zip=new ZipArchive();
         $zip->open($url_file.'python_zip/python_resultats.zip', ZipArchive::OVERWRITE|ZipArchive::CREATE);
         addFileToZip($url_file.'python/', $zip); //调用方法，对要打包的根目录进行操作，并将ZipArchive的对象传递给方法
         $zip->close(); //关闭处理的zip文件
-        vide_file_python();      
+        unlink_dir_python();      
 
         /****************************************** Résultat ******************************************/
         echo "<div class='resultat dark'>";
@@ -132,12 +133,10 @@ if ($numclient != null && $numutilis != null && $mdp != null) {
         echo "<a class='button_chercher back_dibe' href='dibe_histo.php?nclient=$numclient&nutilisateur=$numutilis&ref=$ref&file=$filename&statut=$coderetour' target='_blank'>Historique</a>";
         echo "<label><i class='material-icons icon-search'>arrow_forward</i></label>";
         echo "</div>"; // button_with_icon
-        
+
         echo "</div>"; // resultat
     }
 }
-
-
 echo "</div>"; // page
 echo "<script src='../../resources/javascript/jquery-3.2.1.min.js'></script>";
 echo "<script src='../../resources/javascript/javascript.js'></script>";
