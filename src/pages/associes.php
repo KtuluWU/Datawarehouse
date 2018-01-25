@@ -1,7 +1,10 @@
 <?php
 error_reporting(E_ALL || ~E_NOTICE);
 require "../../config/config.php";
-
+session_start();
+if (!isset($_SESSION['firstname'])) {
+    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+}
 /****************************************** Page ******************************************/
 echo "<head>";
 echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";

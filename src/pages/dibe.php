@@ -4,7 +4,10 @@ ini_set("max_execution_time", 0);
 
 require "../../config/config.php";
 require "../function_request.php";
-
+session_start();
+if (!isset($_SESSION['firstname'])) {
+    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+}
 /****************************************** Title ******************************************/
 echo "<head>";
 echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";

@@ -4,7 +4,10 @@ ini_set("max_execution_time", 0);
 
 require "../../config/config.php";
 require "../function_request.php";
-
+session_start();
+if (!isset($_SESSION['firstname'])) {
+    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+}
 /********* Connexion de la Base de données associées *********/
 try {
     $db_pg_test2 = new PDO($pg_pdo_conn_string);
