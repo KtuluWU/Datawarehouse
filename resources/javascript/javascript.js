@@ -240,7 +240,7 @@ function send_date_ns() {
     var date1 = document.form_pm_saisies.date_ns1.value;
     var date2 = document.form_pm_saisies.date_ns2.value;
     var data = { "date1": date1, "date2": date2 };
-    var check_date = check_date("date_ns1", "date_ns2");
+    var check_date = this.check_date("date_ns1", "date_ns2");
     if (check_date) {
         ajax_send_date(0, 0, msg, data, "req_NS", "loadinggif_ns");
     }
@@ -255,7 +255,7 @@ function send_date_er() {
     var date1 = document.form_entreprise_recue.date_er1.value;
     var date2 = document.form_entreprise_recue.date_er2.value;
     var data = { "date1": date1, "date2": date2 };
-    var check_date = check_date("date_er1", "date_er2");
+    var check_date = this.check_date("date_er1", "date_er2");
     if (check_date) {
         ajax_send_date(0, 0, msg, data, "req_ER", "loadinggif_er");
     }
@@ -270,7 +270,7 @@ function send_date_ed() {
     var date1 = document.form_entreprise_demandees.date_ed1.value;
     var date2 = document.form_entreprise_demandees.date_ed2.value;
     var data = { "date1": date1, "date2": date2 };
-    var check_date = check_date("date_ed1", "date_ed2");
+    var check_date = this.check_date("date_ed1", "date_ed2");
     if (check_date) {
         ajax_send_date(0, 0, msg, data, "req_ED", "loadinggif_ed");
     }
@@ -285,7 +285,7 @@ function send_date_rj() {
     var date1 = document.form_entreprise_rejets.date_rj1.value;
     var date2 = document.form_entreprise_rejets.date_rj2.value;
     var data = { "date1": date1, "date2": date2 };
-    var check_date = check_date("date_rj1", "date_rj2");
+    var check_date = this.check_date("date_rj1", "date_rj2");
     if (check_date) {
         ajax_send_date(0, 0, msg, data, "req_RJ", "loadinggif_rj");
     }
@@ -300,7 +300,7 @@ function send_date_ednr() {
     var date1 = document.form_entreprise_dnr.date_ednr1.value;
     var date2 = document.form_entreprise_dnr.date_ednr2.value;
     var data = { "date1": date1, "date2": date2 };
-    var check_date = check_date("date_ednr1", "date_ednr2");
+    var check_date = this.check_date("date_ednr1", "date_ednr2");
     if (check_date) {
         ajax_send_date(0, 0, msg, data, "req_EDNR", "loadinggif_ednr");
     }

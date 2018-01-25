@@ -6,9 +6,17 @@ session_start();
 if (!isset($_SESSION['firstname'])) {
     echo "<meta http-equiv='refresh' content='0; url=./index.php'>";
 }
+
+if ($_SESSION['civilite'] == 0) {
+    $civilite = "Monsieur";
+} else if ($_SESSION['civilite'] == 1) {
+    $civilite = "Madame";
+}
+
+$username = $_SESSION['firstname']." ".$_SESSION['lastname'];
 /****************************************** Title ******************************************/
 echo "<head>";
-echo "<link rel='stylesheet' type='text/css' href='resources/css/style.css' />";
+echo "<link rel='stylesheet' type='text/css' href='resources/css/style.css?v=201801251000' />";
 echo "<link rel='stylesheet' href='resources/css/sweet-alert.css'>";
 echo "<link rel='stylesheet' href='resources/css/bootstrap.min.css'>";
 echo "</head>";
@@ -19,9 +27,10 @@ echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 
 /****************************************** Page ******************************************/
+echo "<div class='welcome light'>Bonjour $civilite $username</div>";
 echo "<div class='button_with_icon light'>";
 echo "<input class='button_chercher' type='button' id='button_logout' value='Se Déconnecter' onClick='navigateTo_logout()'>";
-echo "<label><i class='material-icons icon-search'>search</i></label>";
+echo "<label><i class='material-icons icon-search'>arrow_downward</i></label>";
 echo "</div>"; //button_with_icon
 
 echo "<div class='content_index light'>";

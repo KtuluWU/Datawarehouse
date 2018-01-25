@@ -15,11 +15,13 @@ $db_res->execute();
 
 $res = $db_res->fetch(PDO::FETCH_ASSOC);
 
+$res_civilite = $res["civilite"];
 $res_firstname = $res["firstname"];
 $res_lastname = $res["lastname"];
 $res_mobile = $res["mobile"];
 $res_dtreg = $res["dtreg"];
 
+$_SESSION['civilite'] = $res_civilite;
 $_SESSION['firstname'] = $res_firstname;
 $_SESSION['lastname'] = $res_lastname;
 $_SESSION['mobile'] = $res_mobile;
