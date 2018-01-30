@@ -6,7 +6,7 @@ require "../function_request.php";
 
 /********* Connexion de la Base de données associées *********/
 try {
-    $dbmysql = new PDO($mysql_pdo_conn_hostdb, $mysql_pdo_conn_user, $mysql_pdo_conn_password);
+    $dbmysql = new PDO($pg_pdo_conn_string_histo);
 } catch (PDOException $e) {
     die("Error!: " . $e->getMessage() . "<br/>");
 }
@@ -15,8 +15,8 @@ try {
 $date_ns1 = $_POST['date1'];
 $date_ns2 = $_POST['date2'];
 
-$query_day = $dbmysql->prepare("SELECT day2-day1 FROM (SELECT DISTINCT Nombre_saisies AS day1 FROM ta_entreprise_recu_histo WHERE Date='$date_ns1') a,
-                               (SELECT DISTINCT Nombre_saisies AS day2 FROM ta_entreprise_recu_histo WHERE Date='$date_ns2') b");
+$query_day = $dbmysql->prepare("SELECT day2-day1 FROM (SELECT DISTINCT \"Nombre_saisies\" AS day1 FROM ta_entreprise_recu_histo WHERE \"Date\"='$date_ns1') a,
+                               (SELECT DISTINCT \"Nombre_saisies\" AS day2 FROM ta_entreprise_recu_histo WHERE \"Date\"='$date_ns2') b");
 $query_day->execute();
 $nombre_day = $query_day->fetch(PDO::FETCH_NUM);
 if (!$nombre_day) {

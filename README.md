@@ -6,9 +6,7 @@ The format like this:
  
     <?php
     $pg_pdo_conn_string = "pgsql:host=;port=;dbname=;user=;password=";
-    $mysql_pdo_conn_hostdb = 'mysql:host=;dbname=';
-    $mysql_pdo_conn_user = '';
-    $mysql_pdo_conn_password = '';
+    $pg_pdo_conn_string_histo = 'pgsql:host=;port=;dbname=;user=;password=';
 
     $token_test = "";
  
@@ -23,9 +21,7 @@ And, you need also create two folders: ``csv`` and ``upload`` for the files expo
  
     <?php
     $pg_pdo_conn_string = "pgsql:host=;port=;dbname=;user=;password=";
-    $mysql_pdo_conn_hostdb = 'mysql:host=;dbname=';
-    $mysql_pdo_conn_user = '';
-    $mysql_pdo_conn_password = '';
+    $pg_pdo_conn_string_histo = 'pgsql:host=;port=;dbname=;user=;password=';
 
     $token_test = "";
  

@@ -3,7 +3,7 @@ require "./config/config.php";
 session_start();
 /********* Connexion de la Base de données associées *********/
 try {
-    $db_myql_login = new PDO($mysql_pdo_conn_hostdb, $mysql_pdo_conn_user, $mysql_pdo_conn_password);
+    $db_myql_login = new PDO($pg_pdo_conn_string_histo);
 } catch (PDOException $e) {
     die("Error!: " . $e->getMessage() . "<br/>");
 }
