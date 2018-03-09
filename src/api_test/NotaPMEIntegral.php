@@ -10,3 +10,7 @@ $siren = $_POST['siren_apitest'];
 echo "<div class='text_NPI api_link'>";
 echo "<a href='../api_test/pages/NPI_page.php?siren_NPI=$siren' target='_blank'>https://api.datainfogreffe-dev.latelier.co/api/v1/Entreprise/notapme/integral/<label class='text-rouge'>$siren</label></a>";
 echo "</div>";
+
+echo "<div class='text_NPI api_link'>";
+echo "(couche basse) <a href='../api_test/pages/NPI_basse_page.php?siren_NPI=$siren' target='_blank'>http://79.137.30.196:8079/notapme/ratio-all?siren=<label class='text-rouge'>$siren</label></a>";
+echo "</div>";
