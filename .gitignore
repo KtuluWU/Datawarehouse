@@ -4,3 +4,5 @@ csv
 config
 test.py
 python_resultats.zip
+test*
+.vscode

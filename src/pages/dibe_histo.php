@@ -4,7 +4,10 @@ ini_set("max_execution_time", 0);
 
 require "../../config/config.php";
 require "../function_request.php";
-
+session_start();
+if (!isset($_SESSION['firstname'])) {
+    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+}
 /****************************************** Title ******************************************/
 echo "<head>";
 echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";
@@ -51,7 +54,7 @@ function check_statut($statut) {
     if ($statut != null && $statut != "") {
         switch($statut) {
             case 0:
-                return "Commande bien exécuté";
+                return "Commande bien exécutée";
                 break;
             case 1:
                 return "<label class='text-rouge'>Impossible d’ouvrir le fichier csv</label>";

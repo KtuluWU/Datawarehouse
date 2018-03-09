@@ -1,23 +1,33 @@
-<?php 
+<?php
 // error_reporting(E_ALL || ~E_NOTICE);
 ini_set("max_execution_time", 0);
 require "../../config/config.php";
 require "file_request.php";
 
 /********* Connexion de la Base de données associées *********/
-$dbtest2 = pg_connect($pg_conn_string);
+try {
+    $db_pg_test2 = new PDO($pg_pdo_conn_string);
+} catch (PDOException $e) {
+    die("Connection failed! (数据库连接错误): " . $e->getMessage() . "<br/>");
+}
 
 /****************************************** Page ******************************************/
 $date_1_rj = $_POST['date1'];
 $date_2_rj = $_POST['date2'];
 
-$query_rejet_rj = pg_query($dbtest2, "select count(idpm) from public.ta_associes_rejets where dtsaisie>='$date_1_rj' and dtsaisie<='$date_2_rj' and bdeleted<>1 ");
-$count_rj = pg_fetch_all($query_rejet_rj)[0]["count"];
+$query_rejet_rj = $db_pg_test2->prepare("SELECT count(idpm) FROM public.ta_associes_rejets WHERE dtsaisie>='$date_1_rj' AND dtsaisie<='$date_2_rj' AND bdeleted<>1 ");
+$query_rejet_rj->execute();
+$fetch_count_rj = $query_rejet_rj->fetch(PDO::FETCH_NUM);
+$count_rj = $fetch_count_rj[0];
 
-$query_jointure_rj_pm_suividem = pg_query($dbtest2, "select tpa.siren, tar.numdepot, tar.noacte, tar.dtacte, tsa.codegreffe from ta_associes_rejets tar, ta_pm_ass tpa, ta_suividem_ass tsa where tar.idpm = tpa.idpm and tar.iddem = tsa.iddemext and tar.dtsaisie>='$date_1_rj' and tar.dtsaisie<'=$date_2_rj' and tar.bdeleted<>1 order by tpa.siren");
-$liste_rj = pg_fetch_all($query_jointure_rj_pm_suividem);
+$query_jointure_rj_pm_suividem = $db_pg_test2->prepare("SELECT tpa.siren, tar.numdepot, tar.noacte, tar.dtacte, tsa.codegreffe FROM ta_associes_rejets tar, ta_pm_ass tpa, ta_suividem_ass tsa WHERE tar.idpm = tpa.idpm AND tar.iddem = tsa.iddemext AND tar.dtsaisie>='$date_1_rj' AND tar.dtsaisie<='$date_2_rj' AND tar.bdeleted<>1 ORDER BY tpa.siren");
+$query_jointure_rj_pm_suividem->execute();
+$liste_rj = array();
+while ($fetch_jointure_rj_pm_suividem = $query_jointure_rj_pm_suividem->fetch(PDO::FETCH_ASSOC)) {
+    array_push($liste_rj, $fetch_jointure_rj_pm_suividem);
+}
 
-export_csv($liste_rj,"liste_rj");
+export_csv($liste_rj, "liste_rj");
 
 echo "<div class='list_rj button_with_icon'>";
 echo "<a class='list' href='../../csv/liste_rj.csv' target='_blank'>Export</a>";

@@ -76,6 +76,12 @@ a:hover, a:focus {
     padding: 30px 0;
 }
 
+.error_null {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .button_request, .button_dibe, .button_apitest {
     font-size: 16;
     color: var(--text-blue);
@@ -458,7 +464,7 @@ a.api_lien{
     width: 60px;
 }
 
-#loadinggif_ns, #loadinggif_er, #loadinggif_ed, #loadinggif_rj, #loadinggif_ednr {
+#loadinggif_ns, #loadinggif_er, #loadinggif_ed, #loadinggif_rj, #loadinggif_ednr, #loadding_login {
     display: none;
 }
 
@@ -521,7 +527,16 @@ a.api_lien{
 }
 
 /********************** Page Api Test **********************/
-#loadinggif_api_FI, #loadinggif_api_Rep, #loadinggif_api_CA, #loadinggif_api_ER, #loadinggif_api_PC {
+#loadinggif_api_FI,
+#loadinggif_api_Rep, 
+#loadinggif_api_CA, 
+#loadinggif_api_ER, 
+#loadinggif_api_PC, 
+#loadinggif_api_NPP,
+#loadinggif_api_NPE,
+#loadinggif_api_NPI,
+#loadinggif_api_AFDCC,
+#loadinggif_api_EE {
     display: none;
 }
 
@@ -550,6 +565,95 @@ a.api_lien{
     text-align: center;
 }
 
+/********************** Page Welcome **********************/
+.welcome {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--text-blue);
+
+}
+
+/********************** Page Login **********************/
+.loadding_login {
+    text-align: center;
+}
+
+.button_login_logout {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin: auto;
+}
+
+/********************** Page Register **********************/
+.reg_title {
+    text-align: center;
+    color: var(--text-blue);
+    font-size: 25;
+    font-weight: bold;
+}
+
+.reg_civilite {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin: auto;
+}
+
+.reg_civilite_text {
+    color: var(--button-grey);
+    margin-left: 10px;
+}
+
+.reg_username_div {
+    padding: 0;
+}
+
+.reg_input {
+    padding: 0 20px;
+    text-align: left;
+    border: 1px solid var(--color-white);
+    border-radius: 8px;
+    height: 31px;
+    width: 300px;
+}
+
+.reg_username_input {
+    width: 130px;
+}
+
+.reg_username {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: auto;
+}
+
+.reg_input_div {
+    width: 300px;
+    margin: auto;
+}
+
+/********************** Page Action_register **********************/
+.reg_success_title, .reg_success_content {
+    text-align: center;
+}
+
+.reg_success_title {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--text-blue);
+}
+
+.reg_success_content {
+    font-size: 20px;
+}
+
+.reg_tips {
+    text-align: center;
+}
+
 /********************** Color **********************/
 
 :root{
@@ -557,7 +661,7 @@ a.api_lien{
     --backgroudcolor-light: #F2F2F1;
     --color-white: #FFF;
     --title-green: #A2C616;
-    --text-blue: #1973AB;
+    --text-blue: #013c6f;
     --text-red: #CF2C2B;
     --text-purple: #7180AF;
     --button-grey: #62615E;
