@@ -16,4 +16,4 @@ function ProceduresCollectives($p_siren, $p_token) {
     echo $res;
 }
 
-ProceduresCollectives($siren, $token_test);
+ProceduresCollectives($siren, $token_prod_demo);

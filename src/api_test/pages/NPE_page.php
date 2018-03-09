@@ -2,12 +2,12 @@
 error_reporting(E_ALL || ~E_NOTICE);
 require("../../../config/config.php");
 
-$siren = $_GET['siren_FI'];
+$siren = $_GET['siren_NPE'];
 
-function FicheIdentite($p_siren, $p_token) {
+function NotaPMEEssentiels($p_siren, $p_token) {
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://api.datainfogreffe.fr/api/v1/Entreprise/FicheIdentite/$p_siren?token=$p_token");
+    curl_setopt($ch, CURLOPT_URL, "https://api.datainfogreffe-dev.latelier.co/api/v1/Entreprise/notapme/essentiel/$p_siren?token=$p_token");
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -16,4 +16,4 @@ function FicheIdentite($p_siren, $p_token) {
     echo $res;
 }
 
-FicheIdentite($siren, $token_prod_demo);
+NotaPMEEssentiels($siren, $token_dev_demo);

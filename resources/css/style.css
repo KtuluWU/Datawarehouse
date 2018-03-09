@@ -527,7 +527,16 @@ a.api_lien{
 }
 
 /********************** Page Api Test **********************/
-#loadinggif_api_FI, #loadinggif_api_Rep, #loadinggif_api_CA, #loadinggif_api_ER, #loadinggif_api_PC {
+#loadinggif_api_FI,
+#loadinggif_api_Rep, 
+#loadinggif_api_CA, 
+#loadinggif_api_ER, 
+#loadinggif_api_PC, 
+#loadinggif_api_NPP,
+#loadinggif_api_NPE,
+#loadinggif_api_NPI,
+#loadinggif_api_AFDCC,
+#loadinggif_api_EE {
     display: none;
 }
 

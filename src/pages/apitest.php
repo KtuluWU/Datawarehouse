@@ -64,6 +64,44 @@ $api_input_data_PC = array("api_siren"=>"api_siren_PC");
 echo_api('api_PC', 'api_form_PC', $api_input_data_PC, 'api_button_PC', 'send_data_apitest_PC()', 'loadinggif_api_PC', 'response_area_api_PC', 0);
 echo "</div>"; //api_ProceduresCollectives
 
+/********************************************************************* DEV *******************************************************************************/
+
+/******************* Nota-PME Performance *******************/
+echo "<div class='api_NotaPMEPerformance block dark'>";
+echo "<div class='title_block'>Nota-PME Performance</div>";
+$api_input_data_NPP = array("api_siren"=>"api_siren_NPP");
+echo_api('api_NPP', 'api_form_NPP', $api_input_data_NPP, 'api_button_NPP', 'send_data_apitest_NPP()', 'loadinggif_api_NPP', 'response_area_api_NPP', 0);
+echo "</div>"; //api_NotaPMEPerformance
+
+/******************* Nota-PME Essentiels *******************/
+echo "<div class='api_NotaPMEEssentiels block light'>";
+echo "<div class='title_block'>Nota-PME Essentiels</div>";
+$api_input_data_NPE = array("api_siren"=>"api_siren_NPE");
+echo_api('api_NPE', 'api_form_NPE', $api_input_data_NPE, 'api_button_NPE', 'send_data_apitest_NPE()', 'loadinggif_api_NPE', 'response_area_api_NPE', 0);
+echo "</div>"; //api_NotaPMEEssentiels
+
+/******************* Nota-PME Intégral *******************/
+echo "<div class='api_NotaPMEIntegral block dark'>";
+echo "<div class='title_block'>Nota-PME Intégral</div>";
+$api_input_data_NPI = array("api_siren"=>"api_siren_NPI");
+echo_api('api_NPI', 'api_form_NPI', $api_input_data_NPI, 'api_button_NPI', 'send_data_apitest_NPI()', 'loadinggif_api_NPI', 'response_area_api_NPI', 0);
+echo "</div>"; //api_NotaPMEIntegral
+
+/******************* AFDCC *******************/
+echo "<div class='api_AFDCC block light'>";
+echo "<div class='title_block'>AFDCC</div>";
+$api_input_data_AFDCC = array("api_siren"=>"api_siren_AFDCC");
+echo_api('api_AFDCC', 'api_form_AFDCC', $api_input_data_AFDCC, 'api_button_AFDCC', 'send_data_apitest_AFDCC()', 'loadinggif_api_AFDCC', 'response_area_api_AFDCC', 0);
+echo "</div>"; //api_AFDCC
+
+/******************* Evaluation Entreprises *******************/
+echo "<div class='api_EvaluationEntreprises block dark'>";
+echo "<div class='title_block'>Evaluation Entreprises</div>";
+$api_input_data_EE = array("api_siren"=>"api_siren_EE");
+echo_api('api_EE', 'api_form_EE', $api_input_data_EE, 'api_button_EE', 'send_data_apitest_EE()', 'loadinggif_api_EE', 'response_area_api_EE', 0);
+echo "</div>"; //api_EvaluationEntreprises
+
+
 
 
 echo "</div>"; // page

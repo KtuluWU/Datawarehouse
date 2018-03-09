@@ -125,7 +125,7 @@ if ($_FILES["file"]["error"] > 0) {
         $statut_r = [];
 
         for ($i = 0; $i < sizeof($siren_traite); $i++) {
-            $statut = json_decode(api_statut($siren_traite[$i], $token_test), true)["Code"];
+            $statut = json_decode(api_statut($siren_traite[$i], $token_prod_demo), true)["Code"];
             $statut_trans = code_trans($statut);
             array_push($statut_r, array("Siren" => $siren_traite[$i], "Statut" => $statut_trans));
         }

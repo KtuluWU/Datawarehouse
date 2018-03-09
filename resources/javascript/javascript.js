@@ -232,6 +232,47 @@ function send_data_apitest_PC() {
     ajax_send_date(1, 1, msg, data, "ProceduresCollectives", "loadinggif_api_PC")
 }
 
+/*************************** API Test DEV ***************************/
+
+function send_data_apitest_NPP() {
+    document.getElementById("loadinggif_api_NPP").style.display = "block";
+    var msg = document.getElementById("response_area_api_NPP");
+    var siren = document.api_form_NPP.api_siren_NPP.value;
+    var data = { "siren": siren };
+    ajax_send_date(1, 1, msg, data, "NotaPMEPerformance", "loadinggif_api_NPP")
+}
+
+function send_data_apitest_NPE() {
+    document.getElementById("loadinggif_api_NPE").style.display = "block";
+    var msg = document.getElementById("response_area_api_NPE");
+    var siren = document.api_form_NPE.api_siren_NPE.value;
+    var data = { "siren": siren };
+    ajax_send_date(1, 1, msg, data, "NotaPMEEssentiels", "loadinggif_api_NPE")
+}
+
+function send_data_apitest_NPI() {
+    document.getElementById("loadinggif_api_NPI").style.display = "block";
+    var msg = document.getElementById("response_area_api_NPI");
+    var siren = document.api_form_NPI.api_siren_NPI.value;
+    var data = { "siren": siren };
+    ajax_send_date(1, 1, msg, data, "NotaPMEIntegral", "loadinggif_api_NPI")
+}
+
+function send_data_apitest_AFDCC() {
+    document.getElementById("loadinggif_api_AFDCC").style.display = "block";
+    var msg = document.getElementById("response_area_api_AFDCC");
+    var siren = document.api_form_AFDCC.api_siren_AFDCC.value;
+    var data = { "siren": siren };
+    ajax_send_date(1, 1, msg, data, "AFDCC", "loadinggif_api_AFDCC")
+}
+
+function send_data_apitest_EE() {
+    document.getElementById("loadinggif_api_EE").style.display = "block";
+    var msg = document.getElementById("response_area_api_EE");
+    var siren = document.api_form_EE.api_siren_EE.value;
+    var data = { "siren": siren };
+    ajax_send_date(1, 1, msg, data, "EvaluationEntreprises", "loadinggif_api_EE")
+}
 
 /*************************** Request ***************************/
 function send_date_ns() {

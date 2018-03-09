@@ -24,4 +24,4 @@ function statut($p_siren, $p_token) {
     echo $res;
 }
 
-statut($siren, $token_test);
+statut($siren, $token_prod_demo);
