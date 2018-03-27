@@ -6,7 +6,7 @@ require "../../config/config.php";
 require "../function_request.php";
 session_start();
 if (!isset($_SESSION['firstname'])) {
-    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+    echo "<meta http-equiv='refresh' content='0; url=../../index.php'>";
 }
 /********* Connexion de la Base de données associées *********/
 try {
@@ -22,6 +22,8 @@ echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/zzsc.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/dcalendar.picker.css'>";
+echo "<link rel='shortcut icon' href='../../resources/assets/data_favicon.png' />";
+echo "<title> Datawarehouse - Requêtes </title>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
@@ -30,7 +32,7 @@ echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 echo "<div class='title_requestes light'>Requêtes</div>";
 echo "<div class='back light'>";
-echo "<a class='button_back' href='../../index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
+echo "<a class='button_back' href='../../welcome.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 
 /****************************************** Nombre de Sociétés saisies non rejetées ******************************************/
 $query_saisie_ass = $db_pg_test2->prepare("SELECT count(distinct idpm) FROM public.ta_associes");

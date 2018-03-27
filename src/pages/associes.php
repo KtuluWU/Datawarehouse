@@ -3,13 +3,15 @@ error_reporting(E_ALL || ~E_NOTICE);
 require "../../config/config.php";
 session_start();
 if (!isset($_SESSION['firstname'])) {
-    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+    echo "<meta http-equiv='refresh' content='0; url=../../index.php'>";
 }
 /****************************************** Page ******************************************/
 echo "<head>";
 echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";
 echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
+echo "<link rel='shortcut icon' href='../../resources/assets/data_favicon.png' />";
+echo "<title> Datawarehouse - Associés actionnaires </title>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
@@ -17,7 +19,7 @@ echo "<div class='logo' onclick='navigateTo_index()'></div>";
 echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 echo "<div class='back light'>";
-echo "<a class='button_back' href='../../index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
+echo "<a class='button_back' href='../../welcome.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 /* echo "<div class='pages no-padding'>";
 echo "<div class='link_page'>";
 echo "<a class='button_request' href='src/pages/request.php' target='_blank'>Requête<i class='material-icons icon-back'>arrow_forward</i></a></div>";

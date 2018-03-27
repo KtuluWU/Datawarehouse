@@ -6,7 +6,7 @@ require "../../config/config.php";
 require "../function_request.php";
 session_start();
 if (!isset($_SESSION['firstname'])) {
-    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+    echo "<meta http-equiv='refresh' content='0; url=../../index.php'>";
 }
 /****************************************** Title ******************************************/
 echo "<head>";
@@ -14,6 +14,8 @@ echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css
 echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/zzsc.css'>";
+echo "<link rel='shortcut icon' href='../../resources/assets/data_favicon.png' />";
+echo "<title> Datawarehouse - DIBE </title>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
