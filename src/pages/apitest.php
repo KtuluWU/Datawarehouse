@@ -6,7 +6,7 @@ require "../../config/config.php";
 require "../function_request.php";
 session_start();
 if (!isset($_SESSION['firstname'])) {
-    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+    echo "<meta http-equiv='refresh' content='0; url=../../index.php'>";
 }
 /****************************************** Title ******************************************/
 echo "<head>";

@@ -3,7 +3,7 @@ error_reporting(E_ALL || ~E_NOTICE);
 require "../../config/config.php";
 session_start();
 if (!isset($_SESSION['firstname'])) {
-    echo "<meta http-equiv='refresh' content='0; url=../../welcome.php'>";
+    echo "<meta http-equiv='refresh' content='0; url=../../index.php'>";
 }
 /****************************************** Page ******************************************/
 echo "<head>";
