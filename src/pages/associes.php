@@ -19,7 +19,7 @@ echo "<div class='logo' onclick='navigateTo_index()'></div>";
 echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 echo "<div class='back light'>";
-echo "<a class='button_back' href='../../index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
+echo "<a class='button_back' href='../../welcome.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 /* echo "<div class='pages no-padding'>";
 echo "<div class='link_page'>";
 echo "<a class='button_request' href='src/pages/request.php' target='_blank'>Requête<i class='material-icons icon-back'>arrow_forward</i></a></div>";

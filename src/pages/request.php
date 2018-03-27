@@ -32,7 +32,7 @@ echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>";
 echo "<div class='title_requestes light'>Requêtes</div>";
 echo "<div class='back light'>";
-echo "<a class='button_back' href='../../index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
+echo "<a class='button_back' href='../../welcome.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 
 /****************************************** Nombre de Sociétés saisies non rejetées ******************************************/
 $query_saisie_ass = $db_pg_test2->prepare("SELECT count(distinct idpm) FROM public.ta_associes");

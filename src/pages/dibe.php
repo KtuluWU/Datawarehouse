@@ -24,7 +24,7 @@ echo "<div class='title_intranet'>Intranet Datawarehouse Datainfogreffe</div>";
 echo "</div>"; // title_logo
 echo "<div class='title_dibe light'>Commande DIBE</div>";
 echo "<div class='back light'>";
-echo "<a class='button_back' href='../../index.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
+echo "<a class='button_back' href='../../welcome.php'><i class='material-icons icon-back'>arrow_back</i>Back</a></div>";
 
 /****************************************** Page ******************************************/
 
