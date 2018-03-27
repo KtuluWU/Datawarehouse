@@ -10,6 +10,7 @@ echo "<head>";
 echo "<link rel='stylesheet' type='text/css' href='../../resources/css/style.css' />";
 echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
+echo "<title> Datawarehouse - Associés actionnaires </title>";
 echo "</head>";
 echo "<div class='page'>";
 echo "<div class='title_logo dark'>";
