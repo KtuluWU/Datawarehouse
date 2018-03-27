@@ -22,6 +22,7 @@ echo "<link rel='stylesheet' href='../../resources/css/sweet-alert.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/bootstrap.min.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/zzsc.css'>";
 echo "<link rel='stylesheet' href='../../resources/css/dcalendar.picker.css'>";
+echo "<link rel='shortcut icon' href='../../resources/assets/data_favicon.png' />";
 echo "<title> Datawarehouse - Requêtes </title>";
 echo "</head>";
 echo "<div class='page'>";
