@@ -157,10 +157,28 @@ a:hover, a:focus {
     border-radius: 20px;
 }
 
-.content_index {
-    padding: 60px 20%;
-    display: flex;
-    justify-content: space-between;
+@media (min-width: 1200px) {
+    .content_index {
+        padding: 60px 20%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 765px) {
+    .content_index {
+        padding: 60px 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 765px) {
+    .content_index {
+        padding: 60px 10px;
+        /* display: flex; */
+        /* justify-content: space-between; */
+    }
 }
 
 .link_left {
@@ -172,6 +190,13 @@ a:hover, a:focus {
     line-height: 200px;
     padding: 0;
 }
+
+@media (max-width: 765px) {
+    .link_index {
+        margin: 20px auto !important;
+    }
+}
+
 
 .link_index {
     width: 200px;
