@@ -90,6 +90,18 @@ echo "<label><i class='material-icons icon-search'>file_upload</i></label>";
 echo "</div>";
 echo "</form>";
 
+function getfileCounts($dir) {
+    $handle = opendir($dir);
+    $i = 0;
+    while (false !== $file=(readdir($handle))) {
+        if ($file !== '.' && $file != '..') {
+            $i++;
+        }
+    }
+    closedir($handle);
+    return $i;
+}
+
 function siren_check($siren_r)
 { //Pour vérifier si tous les siren sont composés par 9 chiffres, sinon, ajouter '0' au premier chiffre
     $siren_new_r = array();
@@ -116,7 +128,7 @@ if ($_FILES["file"]["error"] > 0) {
 
     move_uploaded_file($tmp_name, $url_file . "upload/" . $filename);
 
-    if (!empty_dir("../../upload")) {
+    if (getfileCounts("../../upload")>1) {
         echo "Nom du fichier: <label class='text-rouge'>$filename</label><br>";
         $file_csv = fopen($url_file . "upload/" . $filename, "r");
         $siren_doc_r = array();
