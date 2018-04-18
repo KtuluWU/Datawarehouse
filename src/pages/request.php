@@ -94,7 +94,7 @@ function getfileCounts($dir) {
     $handle = opendir($dir);
     $i = 0;
     while (false !== $file=(readdir($handle))) {
-        if ($file !== '.' && $file != '..') {
+        if ($file != '.gitignore' && $file !== '.' && $file !== '..') {
             $i++;
         }
     }
@@ -128,7 +128,7 @@ if ($_FILES["file"]["error"] > 0) {
 
     move_uploaded_file($tmp_name, $url_file . "upload/" . $filename);
 
-    if (getfileCounts("../../upload")>1) {
+    if (getfileCounts("../../upload")>0) {
         echo "Nom du fichier: <label class='text-rouge'>$filename</label><br>";
         $file_csv = fopen($url_file . "upload/" . $filename, "r");
         $siren_doc_r = array();
