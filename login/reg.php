@@ -6,6 +6,7 @@ echo "<head>";
 echo "<link rel='stylesheet' type='text/css' href='../resources/css/style.css?v=201801251000' />";
 echo "<link rel='stylesheet' href='../resources/css/sweet-alert.css'>";
 echo "<link rel='stylesheet' href='../resources/css/bootstrap.min.css'>";
+echo "<link rel='shortcut icon' href='../resources/assets/data_favicon.png' />";
 echo "<title> Datawarehouse - Inscription </title>";
 echo "</head>";
 echo "<div class='page'>";
