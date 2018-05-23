@@ -7,7 +7,7 @@ $siren = $_GET['siren_NPE'];
 function NotaPMEEssentiels($p_siren, $p_token) {
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://api.datainfogreffe-dev.latelier.co/api/v1/Entreprise/notapme/essentiel/$p_siren?token=$p_token");
+    curl_setopt($ch, CURLOPT_URL, "https://api.datainfogreffe.fr/api/v1/Entreprise/notapme/essentiel/$p_siren?token=$p_token");
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -16,4 +16,4 @@ function NotaPMEEssentiels($p_siren, $p_token) {
     echo $res;
 }
 
-NotaPMEEssentiels($siren, $token_dev_demo);
+NotaPMEEssentiels($siren, $token_prod_demo);

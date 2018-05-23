@@ -7,7 +7,7 @@ $siren = $_GET['siren_EE'];
 function EvaluationEntreprises($p_siren, $p_token) {
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://api.datainfogreffe-dev.latelier.co/api/v1/Entreprise/scoreifg/$p_siren?token=$p_token");
+    curl_setopt($ch, CURLOPT_URL, "https://api.datainfogreffe.fr/api/v1/Entreprise/scoreifg/$p_siren?token=$p_token");
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -16,4 +16,4 @@ function EvaluationEntreprises($p_siren, $p_token) {
     echo $res;
 }
 
-EvaluationEntreprises($siren, $token_dev_demo);
+EvaluationEntreprises($siren, $token_prod_demo);
