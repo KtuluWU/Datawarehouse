@@ -12,5 +12,5 @@ echo "<a href='../api_test/pages/NPI_page.php?siren_NPI=$siren' target='_blank'>
 echo "</div>";
 
 echo "<div class='text_NPI api_link'>";
-echo "(couche basse) <a href='../api_test/pages/NPI_basse_page.php?siren_NPI=$siren' target='_blank'>http://79.137.30.196:8079/notapme/ratio-all?siren=<label class='text-rouge'>$siren</label></a>";
+echo "(couche basse) <a href='../api_test/pages/NPI_basse_page.php?siren_NPI=$siren' target='_blank'>https://apidata.datainfogreffe.fr:8069/notapme/ratio-all?siren=<label class='text-rouge'>$siren</label></a>";
 echo "</div>";

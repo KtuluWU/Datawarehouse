@@ -12,5 +12,5 @@ echo "<a href='../api_test/pages/NPP_page.php?siren_NPP=$siren' target='_blank'>
 echo "</div>";
 
 echo "<div class='text_NPP api_link'>";
-echo "(Couche basse) <a href='../api_test/pages/NPP_basse_page.php?siren_NPP=$siren' target='_blank'>http://79.137.30.196:8079/notapme/notes?siren=<label class='text-rouge'>$siren</label></a>";
+echo "(Couche basse) <a href='../api_test/pages/NPP_basse_page.php?siren_NPP=$siren' target='_blank'>https://apidata.datainfogreffe.fr:8069/notapme/notes?siren=<label class='text-rouge'>$siren</label></a>";
 echo "</div>";
