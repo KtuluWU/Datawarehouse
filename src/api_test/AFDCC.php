@@ -12,6 +12,6 @@ echo "<a href='../api_test/pages/AFDCC_page.php?siren_AFDCC=$siren' target='_bla
 echo "</div>";
 
 echo "<div class='text_AFDCC api_link'>";
-echo "(couche basse) <a href='../api_test/pages/AFDCC_basse_page.php?siren_AFDCC=$siren' target='_blank'>http://79.137.30.196:8079/afdcc/score?siren=<label class='text-rouge'>$siren</label></a>";
+echo "(couche basse) <a href='../api_test/pages/AFDCC_basse_page.php?siren_AFDCC=$siren' target='_blank'>https://apidata.datainfogreffe.fr:8069/afdcc/score?siren=<label class='text-rouge'>$siren</label></a>";
 echo "</div>";
 

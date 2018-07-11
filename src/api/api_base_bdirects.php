@@ -9,7 +9,7 @@ echo '<br>'; */
 
 function statut($p_siren) {
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://79.137.30.196:8079/associes/bdirects?siren=$p_siren");
+    curl_setopt($ch, CURLOPT_URL, "https://apidata.datainfogreffe.fr:8069/associes/bdirects?siren=$p_siren");
     // curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);

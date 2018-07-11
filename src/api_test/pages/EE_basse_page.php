@@ -7,7 +7,7 @@ $siren = $_GET['siren_EE'];
 function EvaluationEntreprises($p_siren) {
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://79.137.30.196:8079/score_ifg/score?siren=$p_siren");
+    curl_setopt($ch, CURLOPT_URL, "https://apidata.datainfogreffe.fr:8069/score_ifg/score?siren=$p_siren");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
     curl_setopt($ch, CURLOPT_USERPWD, 'infogreffe:3fn4rg2ff2');

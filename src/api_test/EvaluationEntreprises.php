@@ -12,5 +12,5 @@ echo "<a href='../api_test/pages/EE_page.php?siren_EE=$siren' target='_blank'>ht
 echo "</div>";
 
 echo "<div class='text_EE api_link'>";
-echo "(couche basse) <a href='../api_test/pages/EE_basse_page.php?siren_EE=$siren' target='_blank'>http://79.137.30.196:8079/score_ifg/score?siren=<label class='text-rouge'>$siren</label></a>";
+echo "(couche basse) <a href='../api_test/pages/EE_basse_page.php?siren_EE=$siren' target='_blank'>https://apidata.datainfogreffe.fr:8069/score_ifg/score?siren=<label class='text-rouge'>$siren</label></a>";
 echo "</div>";
